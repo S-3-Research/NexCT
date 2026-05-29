@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "deploy-training.nexct.io"
+        }
+      ],
+      "destination": "/nurse-match"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "deploy-training.nexct.io"
+        }
+      ],
+      "destination": "/nurse-match/:path*"
+    }
+  ]
+}
