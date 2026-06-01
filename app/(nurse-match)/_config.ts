@@ -9,7 +9,7 @@ export const COHORT = {
   closeDate: new Date('2026-07-31T23:59:59'),
   tuitionValue: '$3,000',
   certName: 'Research-Ready Nurse™',
-  applyUrl: '/nurse-match/apply',
+  applyUrl: '/apply',
 }
 
 export const STATS = [

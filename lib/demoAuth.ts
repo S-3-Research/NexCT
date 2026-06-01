@@ -3,7 +3,7 @@ export const DEMOS = {
     id: 'nurse-match',
     name: 'Nurse Match',
     description: 'Nurse matching and protocol management system',
-    path: '/nurse-match',
+    path: '/',
     hidden: false,
   },
 } as const;

@@ -36,7 +36,7 @@ export default async function NurseStatusPage({
     .eq('id', session.applicationId)
     .single()
 
-  if (!app) redirect('/nurse-match/landing/apply')
+  if (!app) redirect('/apply')
 
   const statusCfg = STATUS_CONFIG[app.status] ?? STATUS_CONFIG.pending
 
@@ -114,7 +114,7 @@ export default async function NurseStatusPage({
         {/* Edit button */}
         {app.applicant_can_edit && app.status !== 'rejected' && (
           <Link
-            href="/nurse-match/edit"
+            href="/edit"
             className="flex items-center justify-center gap-2 w-full px-0 py-[14px] border border-white/10 rounded-[8px] text-[12px] font-bold tracking-[0.16em] uppercase text-white/55 no-underline mb-6 bg-white/[0.03] transition-all duration-200"
           >
             ✎ Update My Application
@@ -132,7 +132,7 @@ export default async function NurseStatusPage({
         {/* Links */}
         <div className="flex flex-col gap-3">
           <Link
-            href="/nurse-match/landing"
+            href="/"
             className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/30 no-underline"
           >
             ← Back to Overview
@@ -183,7 +183,7 @@ function RequestNewLink({ errorParam }: { errorParam?: string }) {
         <ResendLinkForm />
 
         <Link
-          href="/nurse-match/landing"
+          href="/"
           className="mt-8 inline-block text-[11px] font-bold tracking-[0.16em] uppercase text-white/25 no-underline"
         >
           ← Back to Overview

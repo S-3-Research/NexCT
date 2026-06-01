@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
 
   // 重定向到状态页，同时设 httpOnly cookie
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
-  const response = NextResponse.redirect(`${appUrl}/nurse-match/status`)
+  const response = NextResponse.redirect(`${appUrl}/status`)
   response.cookies.set(cookieOptions)
 
   return response
@@ -52,6 +52,6 @@ export async function GET(req: NextRequest) {
 function redirectToError(reason: string) {
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
   return NextResponse.redirect(
-    `${appUrl}/nurse-match/status?error=${reason}`,
+    `${appUrl}/status?error=${reason}`,
   )
 }

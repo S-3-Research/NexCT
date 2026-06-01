@@ -3,33 +3,35 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  ClipboardList, Settings, Bell, Zap,
+  MapPin, Users, ClipboardList, Settings, Bell, Zap,
   Map as MapIcon
 } from 'lucide-react';
 
 import {
-  MOCK_TRIALS_V2 as MOCK_TRIALS,
-  SidebarItemV2,
-  AdminMatchWorkspaceV2 as AdminMatchWorkspace,
+  MOCK_TRIALS,
+  SidebarItem,
+  AdminMatchWorkspace,
   AdminTrials,
+  AdminNurseDirectory,
   AdminSystemConfig,
   MapboxStyles,
-} from '../shared_v2';
+} from '../shared';
 
 export default function AdminPage() {
   const [currentPage, setCurrentPage] = useState('Workspace');
   const [trials, setTrials] = useState(MOCK_TRIALS);
   const [selectedTrialId, setSelectedTrialId] = useState(MOCK_TRIALS[0].id);
-  const [viewMode, setViewMode] = useState('match');
   const [selectedAddrId, setSelectedAddrId] = useState(MOCK_TRIALS[0].addresses[0].id);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
+  const [viewMode, setViewMode] = useState('match');
+  const [isLocked, setIsLocked] = useState(false);
 
   const pageContent = () => {
     switch (currentPage) {
-      case 'Workspace': return <AdminMatchWorkspace trials={trials} setTrials={setTrials} selectedAddrId={selectedAddrId} setSelectedAddrId={setSelectedAddrId} viewMode={viewMode} setViewMode={setViewMode} selectedTrialId={selectedTrialId} setSelectedTrialId={setSelectedTrialId} />;
+      case 'Workspace': return <AdminMatchWorkspace trials={trials} setTrials={setTrials} selectedAddrId={selectedAddrId} setSelectedAddrId={setSelectedAddrId} viewMode={viewMode} setViewMode={setViewMode} isLocked={isLocked} setIsLocked={setIsLocked} selectedTrialId={selectedTrialId} setSelectedTrialId={setSelectedTrialId} />;
       case 'Trials': return <AdminTrials />;
+      case 'Directory': return <AdminNurseDirectory />;
       case 'Config': return <AdminSystemConfig />;
-      default: return <AdminMatchWorkspace trials={trials} setTrials={setTrials} selectedAddrId={selectedAddrId} setSelectedAddrId={setSelectedAddrId} viewMode={viewMode} setViewMode={setViewMode} selectedTrialId={selectedTrialId} setSelectedTrialId={setSelectedTrialId} />;
+      default: return <AdminMatchWorkspace trials={trials} setTrials={setTrials} selectedAddrId={selectedAddrId} setSelectedAddrId={setSelectedAddrId} viewMode={viewMode} setViewMode={setViewMode} isLocked={isLocked} setIsLocked={setIsLocked} selectedTrialId={selectedTrialId} setSelectedTrialId={setSelectedTrialId} />;
     }
   };
 
@@ -38,7 +40,7 @@ export default function AdminPage() {
       {/* Header */}
       <header className="h-16 border-b border-slate-100 px-6 flex items-center justify-between bg-white z-50 shrink-0">
         <div className="flex items-center gap-8">
-          <Link href="/nurse-match" className="flex items-center gap-3 group cursor-pointer">
+          <Link href="/" className="flex items-center gap-3 group cursor-pointer">
             <div className="bg-blue-600 p-2 rounded-xl text-white shadow-sm group-hover:bg-blue-700 transition-colors">
               <Zap size={20} fill="currentColor" />
             </div>
@@ -46,6 +48,17 @@ export default function AdminPage() {
               Nurse<span className="text-blue-600">Match</span>
             </h1>
           </Link>
+          <div className="flex bg-slate-100 p-1 rounded-lg border border-slate-200">
+            <Link
+              href="/dev/nurse"
+              className="px-4 py-1.5 rounded-md text-xs font-semibold transition-all text-slate-500 hover:text-slate-700"
+            >
+              NURSE
+            </Link>
+            <span className="px-4 py-1.5 rounded-md text-xs font-semibold bg-white shadow-sm text-blue-600">
+              ADMIN
+            </span>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <button className="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-white transition-all relative">
@@ -65,18 +78,16 @@ export default function AdminPage() {
 
       {/* Body: sidebar + main */}
       <div className="flex flex-1 overflow-hidden">
-        <aside
-          className={`hidden md:flex md:flex-col border-r border-slate-100 bg-white shrink-0 transition-all duration-300 ${sidebarCollapsed ? 'w-[96px]' : 'w-64'}`}
-          onMouseEnter={() => setSidebarCollapsed(false)}
-          onMouseLeave={() => setSidebarCollapsed(true)}
-        >
-          <div className={`px-6 flex flex-col border-b border-slate-100/50 pt-3 pb-2 overflow-hidden`}>
-            <p className={`text-[10px] font-bold text-slate-400 uppercase tracking-tighter whitespace-nowrap mb-0.5 transition-opacity duration-200 ${sidebarCollapsed ? 'opacity-0' : 'opacity-100'}`}>Main Navigation</p>
+        <aside className="hidden md:flex md:flex-col w-64 border-r border-slate-100 bg-white shrink-0">
+          <div className="h-6 px-6 flex flex-col border-b border-slate-100/50 pt-3">
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter whitespace-nowrap mb-0.5">Main Navigation</p>
+            <div className="h-5" />
           </div>
-          <nav className="flex-1 space-y-3 px-6 py-4">
-            <SidebarItemV2 icon={MapIcon} label="Match Workspace" active={currentPage === 'Workspace'} onClick={() => setCurrentPage('Workspace')} collapsed={sidebarCollapsed} />
-            <SidebarItemV2 icon={ClipboardList} label="Trials" active={currentPage === 'Trials'} onClick={() => setCurrentPage('Trials')} collapsed={sidebarCollapsed} />
-            <SidebarItemV2 icon={Settings} label="System Config" active={currentPage === 'Config'} onClick={() => setCurrentPage('Config')} collapsed={sidebarCollapsed} />
+          <nav className="flex-1 space-y-1 px-3 py-4">
+            <SidebarItem icon={MapIcon} label="Match Workspace" active={currentPage === 'Workspace'} onClick={() => setCurrentPage('Workspace')} />
+            <SidebarItem icon={ClipboardList} label="Trials" active={currentPage === 'Trials'} onClick={() => setCurrentPage('Trials')} />
+            <SidebarItem icon={Users} label="Directory" active={currentPage === 'Directory'} onClick={() => setCurrentPage('Directory')} />
+            <SidebarItem icon={Settings} label="System Config" active={currentPage === 'Config'} onClick={() => setCurrentPage('Config')} />
           </nav>
         </aside>
         <main className="flex-1 relative bg-slate-50 overflow-y-auto">{pageContent()}</main>

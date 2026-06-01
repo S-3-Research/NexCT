@@ -20,7 +20,7 @@ export default function ApplyPage() {
           </div>
         </div>
         <Link
-          href="/nurse-match/landing"
+          href="/"
           className="text-[10px] sm:text-[11px] font-bold tracking-[0.12em] sm:tracking-[0.16em] uppercase text-white/30 no-underline whitespace-nowrap"
         >
           ← Back

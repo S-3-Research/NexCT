@@ -133,7 +133,7 @@ export default function EditForm({ app, isSelectedLimited }: EditFormProps) {
     }
 
     setSuccess(true)
-    setTimeout(() => router.push('/nurse-match/status'), 1500)
+    setTimeout(() => router.push('/status'), 1500)
   }
 
   if (success) {
@@ -336,7 +336,7 @@ export default function EditForm({ app, isSelectedLimited }: EditFormProps) {
           {saving ? 'Saving…' : 'Save Changes'}
         </button>
         <a
-          href="/nurse-match/status"
+          href="/status"
           className="text-[12px] tracking-[0.12em] uppercase text-white/30 no-underline"
         >
           Cancel

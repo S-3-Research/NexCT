@@ -11,7 +11,7 @@ const supabase = createClient(
 
 export default async function EditPage() {
   const session = await getSessionFromCookie()
-  if (!session) redirect('/nurse-match/status')
+  if (!session) redirect('/status')
 
   const { data: app } = await supabase
     .from('nurse_applications')
@@ -25,8 +25,8 @@ export default async function EditPage() {
     .eq('id', session.applicationId)
     .single()
 
-  if (!app) redirect('/nurse-match/status')
-  if (!app.applicant_can_edit || app.status === 'rejected') redirect('/nurse-match/status')
+  if (!app) redirect('/status')
+  if (!app.applicant_can_edit || app.status === 'rejected') redirect('/status')
 
   const isSelectedLimited = app.status === 'selected'
 
@@ -43,7 +43,7 @@ export default async function EditPage() {
           </div>
         </div>
         <Link
-          href="/nurse-match/status"
+          href="/status"
           className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 no-underline"
         >
           ← Back to Status

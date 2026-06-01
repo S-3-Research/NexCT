@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { MapPin, Zap, Home, Settings, ChevronDown } from 'lucide-react';
 
 import {
-  MOCK_NURSES,
-  NursePortal,
+  MOCK_NURSES_V2,
+  NursePortalV2,
   MapboxStyles,
-} from '../shared';
+} from '../shared_v2';
 
 export default function NursePage() {
   const [currentPage, setCurrentPage] = useState('Dashboard');
-  const nurseUser = MOCK_NURSES[0];
+  const nurseUser = MOCK_NURSES_V2[0];
 
   // ── avatar dropdown ──
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,7 +37,7 @@ export default function NursePage() {
       {/* ── Mobile top bar: branding left + avatar dropdown right ── */}
       <div className="md:hidden shrink-0 flex items-center justify-between px-4 pt-3.5 pb-2">
         <Link
-          href="/nurse-match"
+          href="/"
           className="flex items-center gap-1.5 transition-opacity active:opacity-70"
         >
           <div className="bg-blue-600 p-1 rounded-lg text-white">
@@ -87,7 +87,7 @@ export default function NursePage() {
 
       {/* ── Desktop-only minimal top bar ── */}
       <header className="hidden md:flex h-12 border-b border-slate-100 px-6 items-center justify-between bg-white shrink-0">
-        <Link href="/nurse-match" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="bg-blue-600 p-1.5 rounded-lg text-white">
             <Zap size={14} fill="currentColor" />
           </div>
@@ -108,7 +108,7 @@ export default function NursePage() {
             ))}
           </nav>
           <Link
-            href="/nurse-match/app/admin"
+            href="/dev/admin_v2"
             className="text-[10px] font-bold text-slate-400 uppercase tracking-wider hover:text-blue-600 transition-colors"
           >
             Admin →
@@ -122,7 +122,7 @@ export default function NursePage() {
 
       {/* ── Main content — full bleed ── */}
       <main className="flex-1 relative overflow-hidden">
-        <NursePortal user={nurseUser} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <NursePortalV2 user={nurseUser} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </main>
 
       <MapboxStyles />

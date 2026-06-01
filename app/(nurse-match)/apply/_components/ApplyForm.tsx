@@ -478,7 +478,7 @@ function Confirmation() {
         ))}
       </div>
       <Link
-        href="/nurse-match/landing"
+        href="/"
         className="font-bold text-[12px] tracking-[.16em] uppercase
           transition-colors duration-200 hover:text-white"
         style={{ color: 'rgba(255,255,255,0.35)' }}

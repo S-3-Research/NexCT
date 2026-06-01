@@ -85,7 +85,7 @@ export function AdminShell({ initialNurses }: Props) {
       {/* Header */}
       <header className="h-14 border-b border-slate-100 px-6 flex items-center justify-between bg-white z-50 shrink-0">
         <div className="flex items-center gap-6">
-          <Link href="/nurse-match" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <div className="bg-blue-600 p-1.5 rounded-lg text-white group-hover:bg-blue-700 transition-colors">
               <Zap size={16} fill="currentColor" />
             </div>

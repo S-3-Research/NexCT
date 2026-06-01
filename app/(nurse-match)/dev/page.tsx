@@ -745,14 +745,14 @@ export default function App() {
 
         <div className="flex items-center gap-3">
           <a 
-            href={version === 'v1' ? '/nurse-match/app/admin' : '/nurse-match/app/admin_v2'}
+            href={version === 'v1' ? '/dev/admin' : '/dev/admin_v2'}
             className="bg-blue-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase shadow-lg shadow-blue-100/50 hover:bg-blue-700 transition-colors flex items-center gap-2"
           >
             ADMIN DEMO <span className="text-[9px] opacity-70 font-medium">{version}</span>
             <ArrowRight size={14} />
           </a>
           <a 
-            href={version === 'v1' ? '/nurse-match/app/nurse' : '/nurse-match/app/nurse_v2'}
+            href={version === 'v1' ? '/dev/nurse' : '/dev/nurse_v2'}
             className="bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase shadow-lg shadow-slate-200/50 hover:bg-slate-900 transition-colors flex items-center gap-2"
           >
             NURSE DEMO <span className="text-[9px] opacity-70 font-medium">{version}</span>

@@ -145,7 +145,7 @@ function AlreadyRegisteredNotice() {
       <p className="text-[12px] text-white/30">
         Didn&apos;t receive it? Check your spam folder, or{' '}
         <a
-          href="/nurse-match/status"
+          href="/status"
           className="underline transition-colors hover:text-white text-[#1a8c9e]"
         >
           request a new link here
