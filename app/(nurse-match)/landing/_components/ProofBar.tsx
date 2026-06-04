@@ -5,10 +5,11 @@ const avatarColors = ['#4f7cac', '#6a9fb5', '#5b8a8b', '#7da87b', '#9b8ec4']
 
 const stats = [
   {
-    metric: '$3,000',
-    metricSub: 'tuition value',
-    label: 'Fully sponsored — no out-of-pocket cost for the inaugural cohort.',
-    type: 'stat',
+    metric: null,
+    metricSub: null,
+    headline: 'TUITION FULLY SPONSORED FOR THE FIRST 30 CLINICIANS',
+    label: 'Full tuition value: $3,000. Fully sponsored — no out-of-pocket cost for the inaugural cohort.',
+    type: 'headline',
   },
   {
     metric: '8–10 hrs',
@@ -74,8 +75,14 @@ export default function ProofBar() {
                   <div className="text-[2.6rem] font-black text-[#0d1a24] leading-none tracking-tight">
                     {item.metric}
                   </div>
-                  <div className="text-[11px] text-[#0d1a24]/45 uppercase tracking-[0.1em] mt-1 font-medium">
+                  <div className="text-[11px] text-[#0d1a24]/75 uppercase tracking-[0.1em] mt-1 font-medium">
                     {item.metricSub}
+                  </div>
+                </div>
+              ) : item.type === 'headline' ? (
+                <div>
+                  <div className="text-[1.05rem] font-black text-[#0d1a24] leading-[1.22] tracking-[0.03em] uppercase">
+                    {(item as any).headline}
                   </div>
                 </div>
               ) : (
@@ -92,14 +99,14 @@ export default function ProofBar() {
                       </div>
                     ))}
                   </div>
-                  <div className="text-[11px] text-[#0d1a24]/45 uppercase tracking-[0.1em] font-medium">
+                  <div className="text-[11px] text-[#0d1a24]/75 uppercase tracking-[0.1em] font-medium">
                     {item.metricSub}
                   </div>
                 </div>
               )}
 
               {/* Description */}
-              <p className="text-[14px] text-[#0d1a24]/60 leading-[1.6] font-normal">
+              <p className="text-[14px] text-[#0d1a24]/90 leading-[1.6] font-normal">
                 {item.label}
               </p>
             </div>
