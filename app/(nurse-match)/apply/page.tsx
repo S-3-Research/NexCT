@@ -16,7 +16,7 @@ export default function ApplyPage() {
             ACHIEVE
           </div>
           <div className="text-[9px] sm:text-[10px] font-bold tracking-[0.18em] sm:tracking-[0.22em] uppercase text-[#1a8c9e]">
-            Research-Ready Nurse™ · Cohort 4
+            Research-Ready Clinician™ · Cohort 4
           </div>
         </div>
         <Link

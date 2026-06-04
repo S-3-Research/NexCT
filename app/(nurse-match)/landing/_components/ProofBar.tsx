@@ -31,12 +31,12 @@ const stats = [
   {
     metric: '0',
     metricSub: 'experience required',
-    label: 'Open to nurses from all specialties and backgrounds.',
+    label: 'Open to clinicians from all specialties and backgrounds.',
     type: 'stat',
   },
   {
     metric: null,
-    metricSub: 'nurses already applied',
+    metricSub: 'clinicians already applied',
     label: 'Join a growing community expanding into clinical research.',
     type: 'avatars',
   },

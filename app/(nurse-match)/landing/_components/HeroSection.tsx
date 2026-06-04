@@ -82,7 +82,7 @@ export default function HeroSection() {
           </div> */}
           <h1 className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(2rem,4vw,3.2rem)] leading-[1.1] mb-4 animate-[fade-up_0.6s_ease-out_0.15s_both] text-[#0d2a3f]">
             Expand Your<br />
-            <span className="text-[#f0a922]">Nursing Career</span>
+            <span className="text-[#f0a922]">Clinical Career</span>
             <em className="text-[22px] ml-3">with</em>
             <br />Clinical Research.
           </h1>

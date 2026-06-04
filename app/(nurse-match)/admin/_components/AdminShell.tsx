@@ -90,7 +90,7 @@ export function AdminShell({ initialNurses }: Props) {
               <Zap size={16} fill="currentColor" />
             </div>
             <span className="text-base font-bold text-slate-800">
-              Nurse<span className="text-blue-600">Match</span>
+              Clinician<span className="text-blue-600">Match</span>
             </span>
           </Link>
 
@@ -102,7 +102,7 @@ export function AdminShell({ initialNurses }: Props) {
 
           <div className="flex items-center gap-1.5 text-slate-500">
             <Users size={14} />
-            <span className="text-xs font-medium">{nurses.length} nurses total</span>
+            <span className="text-xs font-medium">{nurses.length} clinicians total</span>
           </div>
         </div>
 
@@ -138,7 +138,7 @@ export function AdminShell({ initialNurses }: Props) {
             <button
               onClick={handleGeocode}
               disabled={geocoding}
-              title="Geocode nurses without coordinates"
+              title="Geocode clinicians without coordinates"
               className="flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium text-slate-500
                          hover:text-slate-700 hover:bg-slate-100 transition-colors disabled:opacity-50"
             >

@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 
 const VALUE_CARDS = [
   { icon: '💵', title: 'Supplemental Paid Income', desc: 'Become eligible for project-based paid research opportunities that fit your earnings goals.' },
-  { icon: '🗓', title: 'Flexible Around Your Shift', desc: 'Designed to fit around your current nursing role — not replace it. Set your own pace and availability.' },
-  { icon: '📋', title: 'Research-Ready Nurse™ Certificate', desc: 'GCP-certified training that prepares you for real-world research opportunities in your community.' },
+  { icon: '🗓', title: 'Flexible Around Your Shift', desc: 'Designed to fit around your current clinical role — not replace it. Set your own pace and availability.' },
+  { icon: '📋', title: 'Research-Ready Clinician™ Certificate', desc: 'GCP-certified training that prepares you for real-world research opportunities in your community.' },
   { icon: '📍', title: 'Matched to Local Opportunities', desc: 'Once certified, you can be matched directly to nearby research opportunities — no searching required.' },
 ]
 

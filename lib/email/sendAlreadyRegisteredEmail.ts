@@ -41,7 +41,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
             <td style="padding:0 0 28px 0;text-align:center;">
               <div style="font-size:22px;font-weight:700;letter-spacing:.05em;color:#C49A1A;">ACHIEVE</div>
               <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#0B6E78;margin-top:2px;">
-                Research-Ready Nurse™ · Cohort 4
+                Research-Ready Clinician™ · Cohort 4
               </div>
             </td>
           </tr>
@@ -92,7 +92,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
           <tr>
             <td style="padding:24px 0 0 0;text-align:center;">
               <p style="margin:0;font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6;">
-                ACHIEVE · Research-Ready Nurse™ Program
+                ACHIEVE · Research-Ready Clinician Program
               </p>
             </td>
           </tr>

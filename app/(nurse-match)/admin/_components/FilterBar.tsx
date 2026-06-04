@@ -154,8 +154,8 @@ export function FilterBar({ filters, onChange, total, filtered }: Props) {
 
       <div className="ml-auto text-xs text-slate-400 font-medium">
         {filtered === total
-          ? `${total} nurses`
-          : `${filtered} / ${total} nurses`}
+          ? `${total} clinicians`
+          : `${filtered} / ${total} clinicians`}
       </div>
     </div>
   )

@@ -47,7 +47,7 @@ function buildEmailHtml({ firstName, trainingUrl }: { firstName: string; trainin
                 ACHIEVE
               </div>
               <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#0B6E78;margin-top:2px;">
-                Research-Ready Nurse™ · Cohort 4
+                Research-Ready Clinician™ · Cohort 4
               </div>
             </td>
           </tr>
@@ -64,7 +64,7 @@ function buildEmailHtml({ firstName, trainingUrl }: { firstName: string; trainin
               </h1>
               <p style="margin:0 0 28px 0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.55);">
                 You've been selected to move forward in the ACHIEVE Cohort 4 program.
-                Your next step is to complete the Research-Ready Nurse™ training module.
+                Your next step is to complete the Research-Ready Clinician™ training module.
                 Click the button below to begin.
               </p>
 
@@ -108,7 +108,7 @@ function buildEmailHtml({ firstName, trainingUrl }: { firstName: string; trainin
           <tr>
             <td style="padding:24px 0 0 0;text-align:center;">
               <p style="margin:0;font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6;">
-                ACHIEVE · Research-Ready Nurse™ Program<br/>
+                ACHIEVE · Research-Ready Clinician Program<br/>
                 Questions? Reply to this email or contact your program coordinator.
               </p>
             </td>

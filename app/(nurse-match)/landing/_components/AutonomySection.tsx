@@ -43,7 +43,7 @@ export default function AutonomySection() {
           className="bg-[#0d2a3f] rounded-3xl px-6 py-7 text-white w-full"
         >
           <h3 className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[1.3rem] mb-4 leading-[1.2]">
-            Built for Nurses Ready to Do More.
+            Built for Clinicians Ready to Do More.
           </h3>
           <div className="bg-[#f0a922] rounded-2xl px-4 py-[14px] mb-4 flex items-center gap-[10px]">
             <div className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[2rem] text-[#0d2a3f] leading-none font-black">30</div>
@@ -58,7 +58,7 @@ export default function AutonomySection() {
             style={{ transform: `translateX(${(1 - p) * -60}px)`, opacity: p }}
             className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(1.6rem,3.5vw,2.4rem)] leading-[1.15] text-[#f0a922] mb-5"
           >
-            What Nurses Are Saying
+            What Clinicians Are Saying
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

@@ -225,7 +225,7 @@ function StepBackground({ onNext, onBack }: { onNext: (data: StepData) => void; 
       <SectionHeader
         step="Step 2 of 5"
         title={<>Your professional <em style={{ color: '#d4920a' }}>background.</em></>}
-        sub="We select nurses across a wide range of specialties and experience levels."
+        sub="We select clinicians across a wide range of specialties and experience levels."
       />
       <div className="flex flex-col gap-5 mb-8">
         <div>
@@ -402,14 +402,14 @@ function StepAvailability({
         {/* Preview */}
         <div className="p-[22px] rounded-[8px] border bg-[#d4920a]/[0.06] border-[#d4920a]/20">
           <p className="font-bold text-[10px] tracking-[.22em] uppercase mb-[14px] text-[#d4920a]">
-            Selected nurses receive:
+            Selected clinicians receive:
           </p>
           <div className="flex flex-col gap-2">
             {[
               `Fully sponsored certification (${COHORT.tuitionValue} value — covered)`,
               'Virtual training — 10 hours, self-paced, no travel required',
               'Paid, project-based clinical research opportunities',
-              'A pathway to elevate your nursing career — on your terms',
+              'A pathway to elevate your clinical career — on your terms',
             ].map((item) => (
               <div key={item} className="flex items-start gap-[10px] text-[13px] text-white/55">
                 <span className="flex-shrink-0 text-[#d4920a]">◆</span>
@@ -430,7 +430,7 @@ function StepAvailability({
 
       <p className="text-[11px] leading-[1.5] mt-[14px] text-white/25">
         Selection is limited and reviewed on a rolling basis. Early applicants are prioritized.
-        Additional qualified nurses may be invited to enroll at standard tuition.
+        Additional qualified clinicians may be invited to enroll at standard tuition.
       </p>
     </form>
   )
@@ -466,7 +466,7 @@ function Confirmation() {
         {[
           { icon: '📬', text: <>You&apos;ll receive a confirmation email shortly. <strong style={{ color: 'white' }}>Check your inbox.</strong></> },
           { icon: '⏱', text: <>Selections are reviewed on a <strong style={{ color: 'white' }}>rolling basis.</strong> Early applicants are prioritized.</> },
-          { icon: '✦', text: <>If selected, you&apos;ll be notified with next steps to begin your <strong style={{ color: 'white' }}>Research-Ready Nurse™ training.</strong></> },
+          { icon: '✦', text: <>If selected, you&apos;ll be notified with next steps to begin your <strong style={{ color: 'white' }}>Research-Ready Clinician™ training.</strong></> },
         ].map((item, i) => (
           <div
             key={i}

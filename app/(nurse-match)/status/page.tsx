@@ -49,7 +49,7 @@ export default async function NurseStatusPage({
             ACHIEVE
           </div>
           <div className="text-[10px] font-bold tracking-[0.22em] uppercase text-[#1a8c9e]">
-            Research-Ready Nurse™ · {app.cohort}
+            Research-Ready Clinician™ · {app.cohort}
           </div>
         </div>
         <span className="text-[12px] text-white/30">

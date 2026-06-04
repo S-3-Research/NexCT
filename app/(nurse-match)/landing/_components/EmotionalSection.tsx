@@ -5,7 +5,7 @@ export default function EmotionalSection() {
         <div className="w-7 h-7 bg-[#1a6b7a] rounded-full flex items-center justify-center text-white text-[14px] shrink-0">🛡</div>
         <span>
           <strong>Active U.S.-based RN or NP licenses welcome.</strong>{' '}
-          Nurses from all backgrounds, including those new to research, are encouraged to apply.
+          Clinicians from all backgrounds, including those new to research, are encouraged to apply.
         </span>
       </div>
     </div>

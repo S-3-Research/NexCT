@@ -47,7 +47,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
                 ACHIEVE
               </div>
               <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#0B6E78;margin-top:2px;">
-                Research-Ready Nurse™ · Cohort 4
+                Research-Ready Clinician™ · Cohort 4
               </div>
             </td>
           </tr>
@@ -96,7 +96,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
               </p>
               <div style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.45);">
                 ◆&nbsp; Your application enters our rolling review queue<br/>
-                ◆&nbsp; Selected nurses are notified within 5–7 business days<br/>
+                ◆&nbsp; Selected clinicians are notified within 5–7 business days<br/>
                 ◆&nbsp; Early applicants are reviewed first
               </div>
 
@@ -107,7 +107,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
           <tr>
             <td style="padding:24px 0 0 0;text-align:center;">
               <p style="margin:0;font-size:11px;color:rgba(255,255,255,0.2);line-height:1.6;">
-                ACHIEVE · Research-Ready Nurse™ Program<br/>
+                ACHIEVE · Research-Ready Clinician Program<br/>
                 <a href="${magicLink}" style="color:rgba(255,255,255,0.2);word-break:break-all;">
                   ${magicLink}
                 </a>

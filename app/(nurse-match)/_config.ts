@@ -8,13 +8,13 @@ export const COHORT = {
   seats: 30,
   closeDate: new Date('2026-07-31T23:59:59'),
   tuitionValue: '$3,000',
-  certName: 'Research-Ready Nurse™',
+  certName: 'Research-Ready Clinician™',
   applyUrl: '/apply',
 }
 
 export const STATS = [
   { value: '30',      label: 'Sponsored Seats Nationwide' },
-  { value: '$3K',     label: 'Covered for Selected Nurses' },
+  { value: '$3K',     label: 'Covered for Selected Clinicians' },
   { value: 'Virtual', label: 'Training — Your Own Time' },
 ]
 
@@ -60,7 +60,7 @@ export const AUTONOMY_CONTROLS = [
   {
     icon: '✦',
     title: 'Step In on Your Terms',
-    desc: "This doesn't require leaving nursing. It adds a new dimension to what you already do — on your timeline, at your pace.",
+    desc: "This doesn't require leaving your clinical role. It adds a new dimension to what you already do — on your timeline, at your pace.",
   },
   {
     icon: '💡',
@@ -73,17 +73,17 @@ export const BENEFITS = [
   {
     icon: '🎓',
     title: 'Fully Sponsored Certification',
-    desc: 'The Research-Ready Nurse™ certification — a $3,000 professional training value — at $0 cost for the first 30 selected nurses.',
+    desc: 'The Research-Ready Clinician™ certification — a $3,000 professional training value — at $0 cost for the first 30 selected clinicians.',
   },
   {
     icon: '🔬',
     title: 'Help Bring Treatments to Your Community',
-    desc: 'Training in how care is moving beyond hospitals — into communities, homes, and real-world settings. This is where nursing is going.',
+    desc: 'Training in how care is moving beyond hospitals — into communities, homes, and real-world settings. This is where clinical practice is going.',
   },
   {
     icon: '💰',
     title: 'Paid Opportunities — On Your Schedule',
-    desc: 'Certified nurses become eligible for paid, project-based clinical research opportunities — a new income stream, on your terms, without leaving your current role.',
+    desc: 'Certified clinicians become eligible for paid, project-based clinical research opportunities — a new income stream, on your terms, without leaving your current role.',
   },
   {
     icon: '🌐',
@@ -94,10 +94,10 @@ export const BENEFITS = [
 
 export const WHO_QUALIFIES = [
   { label: 'Bedside RN', desc: 'ICU, oncology, community, home health, or infusion experience' },
-  { label: 'Ready to expand', desc: 'beyond traditional bedside roles without leaving nursing' },
+  { label: 'Ready to expand', desc: 'beyond traditional bedside roles without leaving your clinical role' },
   { label: 'Detail-oriented', desc: 'research demands precision, documentation, and protocol discipline' },
   { label: 'Community-connected', desc: 'underserved and rural communities are priority areas' },
-  { label: 'Bilingual nurses', desc: 'receive priority in specific cohort allocations' },
+  { label: 'Bilingual clinicians', desc: 'receive priority in specific cohort allocations' },
   { label: 'No prior research experience required', desc: 'training provides everything you need' },
 ]
 
@@ -114,7 +114,7 @@ export const STEPS = [
   { num: '1', title: 'Apply',       desc: 'Share specialty, location & availability.', tag: '3 minutes' },
   { num: '2', title: 'Get Selected', desc: 'Matched by region, specialty & community need.', tag: 'Rolling review' },
   { num: '3', title: 'Train',        desc: 'Virtual, self-paced — your schedule, your pace.', tag: 'Fully virtual' },
-  { num: '4', title: 'Certify',      desc: 'Earn your Research-Ready Nurse™ Certificate.', tag: '$3,000 value' },
+  { num: '4', title: 'Certify',      desc: 'Earn your Research-Ready Clinician™ Certificate.', tag: '$3,000 value' },
   { num: '5', title: 'Engage',       desc: 'Step into flexible, project-based research opportunities.', tag: 'On your terms' },
 ]
 

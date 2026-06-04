@@ -56,12 +56,12 @@ export default function ApplySidebar() {
             </span>
           </div>
           <p className="text-[11px] italic" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            For the first {COHORT.seats} selected nurses · $0 out of pocket
+            For the first {COHORT.seats} selected clinicians · $0 out of pocket
           </p>
         </div>
         <div className="px-5 py-[18px]">
           {[
-            { label: 'Fully sponsored tuition', detail: 'for selected nurses' },
+            { label: 'Fully sponsored tuition', detail: 'for selected clinicians' },
             { label: 'Virtual training', detail: '~10 hours, your own pace' },
             { label: 'Paid research opportunities', detail: 'after certification' },
             { label: 'No research experience', detail: 'required to apply' },
@@ -84,7 +84,7 @@ export default function ApplySidebar() {
       <div
         className="text-[12px] italic leading-[1.6] px-4 py-[14px] border rounded-[8px] bg-white/[0.03] border-white/[0.07] text-white/35"
       >
-        Most nurses who apply are new to clinical research. What matters is clinical excellence,
+        Most clinicians who apply are new to clinical research. What matters is clinical excellence,
         curiosity, and a desire to grow.
         <br /><br />
         <strong className="text-white/65">

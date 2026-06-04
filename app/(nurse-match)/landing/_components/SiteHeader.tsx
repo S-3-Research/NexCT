@@ -30,7 +30,7 @@ export default function SiteHeader() {
             {/* Text — hidden on mobile */}
             <div className="hidden sm:block">
               <div className="text-[11px] uppercase text-gray-500 mb-0 font-bold leading-tight">
-                Research-Ready Nurse™ Program
+                Research-Ready Clinician Program
               </div>
               <div className="text-[11px] text-gray-400">
                 by ACHIEVE Clinical and S-3 Research
@@ -90,7 +90,7 @@ export default function SiteHeader() {
         {menuOpen && (
           <div className="sm:hidden mt-2 backdrop-blur-xl border border-white/40 bg-gray-100/50 rounded-3xl shadow-lg px-5 py-4 flex flex-col gap-4">
             <div className="text-[11px] uppercase text-gray-500 font-bold leading-tight">
-              Research-Ready Nurse™ Program
+              Research-Ready Clinician Program
             </div>
             <div className="text-[11px] text-gray-400 -mt-2">
               by ACHIEVE Clinical and S-3 Research

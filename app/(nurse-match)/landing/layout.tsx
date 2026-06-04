@@ -25,7 +25,7 @@ const barlowCondensed = Barlow_Condensed({
 })
 
 export const metadata: Metadata = {
-  title: 'Research-Ready Nurse™ Program | ACHIEVE Clinical Expertise',
+  title: 'Research-Ready Clinician Program | ACHIEVE Clinical Expertise',
   description:
     'Gain the skills, certification, and access to paid local research opportunities — on your schedule. 30 fully sponsored seats available.',
 }

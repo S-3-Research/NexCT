@@ -20,7 +20,7 @@ export function NurseTable({ nurses, selectedId, onSelect }: Props) {
     return (
       <div className="flex flex-col items-center justify-center flex-1 py-20 text-slate-400">
         <div className="text-4xl mb-3">🔍</div>
-        <p className="text-sm font-medium">No nurses match the current filters</p>
+        <p className="text-sm font-medium">No clinicians match the current filters</p>
       </div>
     )
   }
@@ -31,7 +31,7 @@ export function NurseTable({ nurses, selectedId, onSelect }: Props) {
         <thead>
           <tr className="bg-slate-50 border-b border-slate-100 sticky top-0 z-10">
             <th className="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider whitespace-nowrap">
-              Nurse
+              Clinician
             </th>
             <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider whitespace-nowrap">
               App Status
