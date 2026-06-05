@@ -80,7 +80,7 @@ export default function HeroSection() {
               </div>
             </div>
           </div> */}
-          <h1 className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(2rem,4vw,3.2rem)] leading-[1.1] mb-4 animate-[fade-up_0.6s_ease-out_0.15s_both] text-[#0d2a3f]">
+          <h1 className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(2.3rem,4vw,3.2rem)] leading-[1.1] mb-4 animate-[fade-up_0.6s_ease-out_0.15s_both] text-[#0d2a3f]">
             Expand Your<br />
             <span className="text-[#f0a922]">Clinical Career</span>
             <em className="text-[22px] ml-3">with</em>
@@ -89,13 +89,13 @@ export default function HeroSection() {
           <Link
             href={COHORT.applyUrl}
             onMouseEnter={() => setShimmerKey(k => k + 1)}
-            className="self-stretch sm:self-start bg-[#f0a922] text-gray-100 font-extrabold text-[15px] py-[14px] sm:px-6 rounded-3xl no-underline uppercase tracking-[0.06em] text-center relative overflow-hidden transition-transform duration-200 hover:scale-[1.04] animate-[fade-up_0.6s_ease-out_0.3s_both]"
+            className="self-stretch sm:self-start bg-[#f0a922] text-gray-100 font-extrabold text-[15px] sm:text-[15px] py-[14px] sm:px-6 rounded-3xl no-underline uppercase tracking-[0.06em] text-center relative overflow-hidden transition-transform duration-200 hover:scale-[1.04] animate-[fade-up_0.6s_ease-out_0.3s_both]"
           >
             {/* Shimmer sweep — key flip remounts span, restarting animation each hover */}
             <span key={shimmerKey} className="absolute inset-0 -translate-x-full animate-[shimmer_2s_ease-in-out_2s_1] bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]" />
             <span className="relative">Apply for Sponsored Selection</span>
           </Link>
-          <p className="text-[11px] text-[#0d2a3f]/45 mt-2 pl-2 text-center sm:text-left animate-[fade-up_0.6s_ease-out_0.4s_both]">
+          <p className="text-[13px] sm:text-[11px] text-[#0d2a3f]/45 mt-2 pl-1 text-center sm:text-left animate-[fade-up_0.6s_ease-out_0.4s_both]">
             Selected clinicians pay no tuition for this inaugural sponsored cohort.
           </p>
           {/* <p className="text-[16px] text-[#0d2a3f] leading-[1.6] mb-2">

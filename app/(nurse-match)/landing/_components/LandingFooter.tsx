@@ -12,8 +12,8 @@ export default function LandingFooter() {
         </div>
         <div>
           <div className="hidden sm:block text-[11px] font-bold uppercase tracking-[0.1em] text-[#1a6b7a] mb-1.5">About ACHIEVE</div>
-          <p className="text-[13px] sm:text-[14px] text-[#6b7c8d] leading-[1.6]">ACHIEVE Clinical Expertise is a clinician-powered clinical research platform preparing clinicians for research-ready roles in decentralized, community-based, and real-world clinical studies.</p>
-          <a href="https://achieveexpertise.com/" className="text-[#1a6b7a] font-semibold no-underline text-[13px] sm:text-[14px] mt-2 inline-block">Learn more about ACHIEVE →</a>
+          <p className="text-[16px] sm:text-[14px] text-[#6b7c8d] leading-[1.6]">ACHIEVE Clinical Expertise is a clinician-powered clinical research platform preparing clinicians for research-ready roles in decentralized, community-based, and real-world clinical studies.</p>
+          <a href="https://achieveexpertise.com/" className="text-[#1a6b7a] font-semibold no-underline text-[16px] sm:text-[14px] mt-2 inline-block">Learn more about ACHIEVE →</a>
         </div>
         {/* Badges — horizontal scroll on mobile, flex wrap on desktop */}
         <div className="flex gap-3 overflow-x-auto pb-1 sm:pb-0 sm:flex-col sm:gap-3 -mx-5 px-5 sm:mx-0 sm:px-0">
@@ -51,7 +51,7 @@ export default function LandingFooter() {
           ].map((badge) => (
             <div key={badge.label} className="text-center px-4 py-3 border border-[#e8eef2] rounded-2xl shrink-0 sm:shrink sm:w-full flex sm:flex-row items-center gap-2 sm:gap-3">
               <div className="w-8 h-8 rounded-xl bg-[#f0f4f7] flex items-center justify-center shrink-0">{badge.icon}</div>
-              <div className="text-[11px] font-semibold text-[#0d2a3f] whitespace-nowrap sm:whitespace-normal">{badge.label}</div>
+              <div className="text-[13px] sm:text-[11px] font-semibold text-[#0d2a3f] whitespace-nowrap sm:whitespace-normal">{badge.label}</div>
             </div>
           ))}
         </div>

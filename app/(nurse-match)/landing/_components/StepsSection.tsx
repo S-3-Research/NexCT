@@ -23,7 +23,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
     <div className="border-b border-[#e8eef2]">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full text-left bg-transparent border-none py-4 text-[14px] font-semibold text-[#0d2a3f] cursor-pointer flex justify-between items-center gap-3"
+        className="w-full text-left bg-transparent border-none py-4 text-[15px] sm:text-[14px] font-semibold text-[#0d2a3f] cursor-pointer flex justify-between items-center gap-3"
       >
         {q}
         <span
@@ -33,7 +33,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         >&#9660;</span>
       </button>
       {open && (
-        <div className="text-[13px] text-[#6b7c8d] leading-[1.7] pb-4">{a}</div>
+        <div className="text-[15px] sm:text-[13px] text-[#6b7c8d] leading-[1.7] pb-4">{a}</div>
       )}
     </div>
   )

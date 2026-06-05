@@ -60,8 +60,8 @@ export default function WhatYouGetSection() {
                 {card.icon}
               </div>
               <div>
-                <h4 className="text-[14px] font-bold text-[#0d2a3f] mb-1.5 leading-tight">{card.title}</h4>
-                <p className="text-[13px] text-[#6b7c8d] leading-[1.65]">{card.desc}</p>
+                <h4 className="text-[16px] sm:text-[14px] font-bold text-[#0d2a3f] mb-1.5 leading-tight">{card.title}</h4>
+                <p className="text-[16px] sm:text-[13px] text-[#6b7c8d] leading-[1.65]">{card.desc}</p>
               </div>
             </div>
           ))}
@@ -74,10 +74,10 @@ export default function WhatYouGetSection() {
               key={item.label}
               className={`px-6 py-6 flex flex-col gap-2 ${i > 0 ? 'border-t sm:border-t-0 sm:border-l border-[#e2eaef]' : ''} ${i % 2 === 0 ? 'bg-[#f7f9fb]' : 'bg-white'}`}
             >
-              <div className="text-[11px] font-bold uppercase tracking-[0.09em] text-[#1a6b7a] flex items-center gap-2">
+              <div className="text-[14px] sm:text-[11px] font-bold uppercase tracking-[0.09em] text-[#1a6b7a] flex items-center gap-2">
                 <span>{item.icon}</span>{item.label}
               </div>
-              <p className="text-[13px] text-[#1a2a38] leading-[1.6]">{item.body}</p>
+              <p className="text-[16px] sm:text-[13px] text-[#1a2a38] leading-[1.6]">{item.body}</p>
             </div>
           ))}
         </div>

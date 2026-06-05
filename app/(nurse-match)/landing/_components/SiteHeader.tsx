@@ -68,7 +68,7 @@ export default function SiteHeader() {
           <div className="flex sm:hidden items-center gap-2">
             <Link
               href="mailto:hello@achieveclinical.com"
-              className="border-2 border-[#0d2a3f] bg-[#0d2a3f] text-white text-[11px] font-extrabold px-3 py-[7px] rounded-3xl no-underline uppercase tracking-[0.05em] whitespace-nowrap"
+              className="border-2 border-[#0d2a3f] bg-[#0d2a3f] text-white text-[13px] font-extrabold px-3 py-[7px] rounded-3xl no-underline uppercase tracking-[0.05em] whitespace-nowrap"
             >
               Contact
             </Link>

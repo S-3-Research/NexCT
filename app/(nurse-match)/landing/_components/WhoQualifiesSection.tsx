@@ -39,7 +39,7 @@ export default function WhoQualifiesSection() {
         <h2 className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(1.5rem,3vw,2rem)] text-[#0d2a3f] text-center mb-2">
           You Already Have the Foundation
         </h2>
-        <p className="text-center text-[#6b7c8d] text-[15px] mb-8">
+        <p className="text-center text-[#6b7c8d] text-[17px] sm:text-[15px] mb-8">
           The skills you use every day as a nurse are exactly what clinical research needs.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -49,8 +49,8 @@ export default function WhoQualifiesSection() {
                 {ICONS[item.iconKey]}
               </div>
               <div>
-                <h4 className="text-[14px] font-bold text-[#0d2a3f] mb-1">{item.title}</h4>
-                <p className="text-[12px] text-[#6b7c8d] leading-[1.5]">{item.desc}</p>
+                <h4 className="text-[16px] sm:text-[14px] font-bold text-[#0d2a3f] mb-1">{item.title}</h4>
+                <p className="text-[15px] sm:text-[12px] text-[#6b7c8d] leading-[1.5]">{item.desc}</p>
               </div>
             </div>
           ))}

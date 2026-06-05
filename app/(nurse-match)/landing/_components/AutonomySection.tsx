@@ -73,8 +73,8 @@ export default function AutonomySection() {
                   className="bg-white rounded-3xl p-5 border border-[#e2eaef] shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
                 >
                   <div className="text-[32px] text-[#f0a922] leading-[0.8] mb-2">&ldquo;</div>
-                  <p className="text-[13px] italic text-[#1a2a38] leading-[1.6] mb-4">{t.quote}</p>
-                  <div className="text-[12px] text-[#6b7c8d] font-semibold leading-[1.5]">
+                  <p className="text-[15px] sm:text-[13px] italic text-[#1a2a38] leading-[1.6] mb-4">{t.quote}</p>
+                  <div className="text-[14px] sm:text-[12px] text-[#6b7c8d] font-semibold leading-[1.5]">
                     — {t.attrib}<br />{t.sub}
                   </div>
                 </div>

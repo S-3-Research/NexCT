@@ -28,19 +28,19 @@ export default function ScarcitySection() {
       <div className="max-w-[700px] mx-auto">
         <div
           style={{ opacity: p, transform: `translateY(${(1 - p) * 16}px)` }}
-          className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#f0a922] mb-2"
+          className="text-[13px] sm:text-[11px] font-bold tracking-[0.12em] uppercase text-[#f0a922] mb-2"
         >
           Why It Matters
         </div>
         <h2
           style={{ opacity: p, transform: `translateY(${(1 - p) * 20}px)`, transitionDelay: '0.05s' }}
-          className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(1.3rem,2.5vw,1.8rem)] mb-[10px] leading-[1.2]"
+          className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(1.6rem,2.5vw,1.8rem)] mb-[10px] leading-[1.2]"
         >
           Too Many Patients Lack Access to Clinical Innovation.
         </h2>
         <p
           style={{ opacity: p, transform: `translateY(${(1 - p) * 24}px)` }}
-          className="text-[15px] text-white/80"
+          className="text-[17px] sm:text-[15px] text-white/80"
         >
           Trials closer to home can help bring research opportunities to more patients and communities.
         </p>
