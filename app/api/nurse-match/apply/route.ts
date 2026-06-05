@@ -82,7 +82,12 @@ export async function POST(req: NextRequest) {
     // 发确认邮件（附状态页链接）
     const token = await signMagicToken({ applicationId: data.id, email: normalizedEmail })
     const statusLink = `${appUrl}/api/nurse-match/verify?token=${token}`
-    await sendSubmissionConfirmationEmail({ to: normalizedEmail, firstName, statusLink })
+    try {
+      await sendSubmissionConfirmationEmail({ to: normalizedEmail, firstName, statusLink })
+    } catch (emailErr) {
+      // 邮件失败不阻断提交，仅记录日志
+      console.error('[nurse-apply] Email send failed (non-fatal):', emailErr)
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ApplyForm from './ApplyForm'
 import ApplySidebar from './ApplySidebar'
 
@@ -19,8 +19,20 @@ export default function ApplyPageClient() {
   const [formData, setFormData] = useState<FormData>({})
   const [alreadyRegistered, setAlreadyRegistered] = useState(false)
 
-  const next   = () => setStep((s) => Math.min(s + 1, 4) as Step)
-  const back   = () => setStep((s) => Math.max(s - 1, 0) as Step)
+  const anchorRef = useRef<HTMLDivElement>(null)
+
+  const scrollToFormTop = () => {
+    // Defer until after React re-render + browser paint.
+    // iOS Safari silently drops scrollTo() calls made synchronously during a state update.
+    setTimeout(() => {
+      if (!anchorRef.current) return
+      const top = anchorRef.current.getBoundingClientRect().top + window.scrollY - 57
+      window.scrollTo({ top: Math.max(0, top) })
+    }, 50)
+  }
+
+  const next = () => { setStep((s) => Math.min(s + 1, 4) as Step); scrollToFormTop() }
+  const back = () => { setStep((s) => Math.max(s - 1, 0) as Step); scrollToFormTop() }
   const goTo   = (i: Step) => { if (i <= step) setStep(i) }
 
   function mergeData(stepData: FormData) {
@@ -45,53 +57,58 @@ export default function ApplyPageClient() {
         setAlreadyRegistered(true)
         return
       }
-      setDone(true)
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {
+      setDone(true)
+      scrollToFormTop()
       setSubmitting(false)
     }
   }
 
   return (
     <>
+      {/* sentinel: non-sticky anchor used to calculate scroll-to-progress-bar position */}
+      <div ref={anchorRef} />
       {/* ── Progress bar — sticky, full-width between hero and main grid ── */}
-      {!done && (
-        <div
-          className="sticky top-[57px] z-[99] border-b px-12 max-[860px]:px-6 py-4 overflow-x-hidden bg-[#0a1f30] border-white/[0.07]"
-        >
-          <div className="max-w-[680px] mx-auto">
-            <div className="flex items-center mb-[10px]">
-              {STEP_LABELS.map((label, i) => (
+      <div
+        className="sticky top-[57px] z-[99] border-b px-12 max-[860px]:px-6 py-4 overflow-x-hidden bg-[#0a1f30] border-white/[0.07]"
+      >
+        <div className="max-w-[680px] mx-auto">
+          <div className="flex items-center mb-[10px]">
+            {STEP_LABELS.map((label, i) => {
+              const checked = done || i < step
+              const current = !done && i === step
+              return (
                 <div key={label} className="flex items-center flex-1 last:flex-none">
                   <button
-                    onClick={() => goTo(i as Step)}
+                    onClick={() => !done && goTo(i as Step)}
                     className={`flex items-center gap-[6px] font-barlow font-bold text-[10px]
                       tracking-[.14em] uppercase transition-colors duration-200
-                      ${i <= step ? 'cursor-pointer' : 'cursor-default'}
-                      ${i < step ? 'text-[#d4920a]' : i === step ? 'text-[#1a8c9e]' : 'text-white/30'}`}
+                      ${!done && i <= step ? 'cursor-pointer' : 'cursor-default'}
+                      ${checked ? 'text-[#d4920a]' : current ? 'text-[#1a8c9e]' : 'text-white/30'}`}
                   >
                     <span
                       className={`w-[22px] h-[22px] rounded-full border border-current flex items-center justify-center
                         text-[11px] font-bold flex-shrink-0 transition-all duration-200
-                        ${i < step ? 'bg-[#d4920a] text-white' : i === step ? 'bg-[#1a8c9e] text-white' : 'bg-transparent'}`}
+                        ${checked ? 'bg-[#d4920a] text-white' : current ? 'bg-[#1a8c9e] text-white' : 'bg-transparent'}`}
                     >
-                      {i < step ? '✓' : i + 1}
+                      {checked ? '✓' : i + 1}
                     </span>
                     <span className="max-[540px]:hidden">{label}</span>
                   </button>
                   {i < STEP_LABELS.length - 1 && (
-                    <div className={`flex-1 h-px mx-2 ${i < step ? 'bg-[#d4920a]/30' : 'bg-white/[0.08]'}`} />
+                    <div className={`flex-1 h-px mx-2 ${checked ? 'bg-[#d4920a]/30' : 'bg-white/[0.08]'}`} />
                   )}
                 </div>
-              ))}
-            </div>
-            <div className="h-[3px] rounded-[2px] overflow-hidden bg-white/[0.07]">
-              <div className="progress-bar-fill" style={{ width: `${PROGRESS[step]}%` }} />
-            </div>
+              )
+            })}
+          </div>
+          <div className="h-[3px] rounded-[2px] overflow-hidden bg-white/[0.07]">
+            <div className="progress-bar-fill" style={{ width: done ? '100%' : `${PROGRESS[step]}%` }} />
           </div>
         </div>
-      )}
+      </div>
 
       {/* ── Main grid: form + sidebar ── */}
       <div className="apply-main-grid max-w-[1060px] mx-auto px-12 max-[860px]:px-6 pt-12 pb-20 grid gap-12 bg-[#071828]">
