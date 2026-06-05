@@ -93,8 +93,11 @@ export default function HeroSection() {
           >
             {/* Shimmer sweep — key flip remounts span, restarting animation each hover */}
             <span key={shimmerKey} className="absolute inset-0 -translate-x-full animate-[shimmer_2s_ease-in-out_2s_1] bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]" />
-            <span className="relative">• Apply for Sponsored Selection</span>
+            <span className="relative">Apply for Sponsored Selection</span>
           </Link>
+          <p className="text-[11px] text-[#0d2a3f]/45 mt-2 pl-2 text-center sm:text-left animate-[fade-up_0.6s_ease-out_0.4s_both]">
+            Selected clinicians pay no tuition for this inaugural sponsored cohort.
+          </p>
           {/* <p className="text-[16px] text-[#0d2a3f] leading-[1.6] mb-2">
             Gain the skills, certification, and access to paid local research opportunities — on your schedule.
           </p>
@@ -118,13 +121,13 @@ export default function HeroSection() {
             />
 
             {/* Glassmorphism floating card — bottom-right */}
-            <div className="absolute bottom-4 right-4 backdrop-blur-xl bg-white/20 border-0 border-white/40 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.25)] p-4 flex gap-3 items-center md:min-w-[320px] max-w-[420px]">
+            <div className="absolute bottom-4 right-4 backdrop-blur-xl bg-white/20 border-0 border-white/40 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.25)] p-2 flex gap-3 items-center md:min-w-[320px] max-w-[420px]">
               {/* Seat count — SVG knockout text revealing glass */}
-              <svg ref={badgeRef} width="90" height="90" viewBox="0 0 80 80" className="shrink-0">
+              <svg ref={badgeRef} width="125" height="125" viewBox="0 0 80 80" className="shrink-0">
                 <rect width="80" height="80" fill="#09284d" rx="12" />
-                <text x="40" y="46" textAnchor="middle" fontFamily="system-ui,sans-serif" fontWeight="900" fontSize="40" fill="white">{count}</text>
-                <text x="40" y="60" textAnchor="middle" fontFamily="system-ui,sans-serif" fontWeight="700" fontSize="8" letterSpacing="1" fill="white">SPONSORED</text>
-                <text x="40" y="71" textAnchor="middle" fontFamily="system-ui,sans-serif" fontWeight="700" fontSize="8" letterSpacing="1" fill="white">SEATS</text>
+                <text x="40" y="40" textAnchor="middle" fontFamily="system-ui,sans-serif" fontWeight="900" fontSize="40" fill="white">{count}</text>
+                <text x="40" y="57" textAnchor="middle" fontFamily="system-ui,sans-serif" fontWeight="700" fontSize="7" letterSpacing="0" fill="white">FULLY SPONSORED</text>
+                <text x="40" y="68" textAnchor="middle" fontFamily="system-ui,sans-serif" fontWeight="700" fontSize="7" letterSpacing="0" fill="white">SEATS</text>
               </svg>
               {/* Text */}
               <div className="hidden md:flex flex-col justify-between self-stretch py-2 px-2 flex-1 min-w-0">
