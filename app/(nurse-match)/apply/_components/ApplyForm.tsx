@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import {
   ROLES, SPECIALTIES, SPECIAL_EXPERIENCE_OPTIONS, EXPERIENCE_OPTIONS, LANGUAGE_OPTIONS,
-  GOAL_OPTIONS, HOURS_OPTIONS, SOURCE_OPTIONS, US_STATES, COHORT,
+  GOAL_OPTIONS, HOURS_OPTIONS, SOURCE_OPTIONS, REFERRAL_OPTIONS, US_STATES, COHORT,
 } from '../../_config'
 
 type StepData = Record<string, string | string[]>
@@ -397,6 +397,17 @@ function StepAvailability({
             <option value="">Select one</option>
             {SOURCE_OPTIONS.map((s) => <option key={s}>{s}</option>)}
           </SelectInput>
+        </div>
+        <div>
+          <FieldLabel>
+            Were you referred by a partner organization?{' '}
+            <span className="font-normal opacity-50">(optional)</span>
+          </FieldLabel>
+          <div className="grid grid-cols-2 gap-[10px] mt-1">
+            {REFERRAL_OPTIONS.map((r) => (
+              <RadioOption key={r} name="referral" value={r} label={r} />
+            ))}
+          </div>
         </div>
 
         {/* Preview */}

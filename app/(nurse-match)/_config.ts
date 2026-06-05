@@ -203,6 +203,11 @@ export const SOURCE_OPTIONS = [
   'Other',
 ]
 
+export const REFERRAL_OPTIONS = [
+  'MedChi',
+  'NHHRI',
+]
+
 export const US_STATES = [
   'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware',
   'Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky',

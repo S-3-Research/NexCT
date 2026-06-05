@@ -6,12 +6,12 @@ import { getSessionFromCookie } from '@/lib/nurseSession'
 const ALL_EDITABLE = [
   'phone', 'role', 'specialty', 'years_experience', 'languages',
   'address', 'state', 'city', 'zip', 'serves_underserved',
-  'motivation_text', 'goal', 'hours_per_month', 'special_experience',
+  'motivation_text', 'goal', 'hours_per_month', 'special_experience', 'referral',
 ] as const
 
 // 仅 contact / availability — selected 时只允许改这些
 const CONTACT_EDITABLE = [
-  'phone', 'address', 'state', 'city', 'zip', 'hours_per_month', 'languages',
+  'phone', 'address', 'state', 'city', 'zip', 'hours_per_month', 'languages', 'referral',
 ] as const
 
 export async function PATCH(req: NextRequest) {

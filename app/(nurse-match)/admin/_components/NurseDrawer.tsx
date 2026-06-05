@@ -439,6 +439,7 @@ export function NurseDrawer({ nurse, onClose, onUpdate }: Props) {
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="Hours / Month" value={nurse.hours_per_month} />
                   <Field label="Source"        value={nurse.source} />
+                  <Field label="Referred By"   value={nurse.referral ?? '—'} />
                   <Field label="Cohort"        value={nurse.cohort} />
                   <Field label="Email Verified" value={nurse.email_verified ? 'Yes ✓' : 'No'} />
                 </div>

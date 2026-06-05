@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
       role, specialty, yearsExperience, languages,
       address, state, city, zip, servesUnderserved,
       motivationText, goal,
-      hoursPerMonth, source,
+      hoursPerMonth, source, referral,
       specialExperience,
     } = body
 
@@ -67,6 +67,7 @@ export async function POST(req: NextRequest) {
         goal,
         hours_per_month: hoursPerMonth,
         source,
+        referral: referral || null,
         special_experience: Array.isArray(specialExperience) ? specialExperience : specialExperience ? [specialExperience] : [],
       })
       .select('id')

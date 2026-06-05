@@ -16,7 +16,7 @@ export default async function AdminPage() {
       id, first_name, last_name, email, phone,
       role, specialty, years_experience, languages,
       address, state, city, zip, serves_underserved,
-      motivation_text, goal, hours_per_month, source,
+      motivation_text, goal, hours_per_month, source, referral,
       email_verified, status, cohort,
       applied_at, verified_at, reviewed_at, admin_notes,
       training_status, training_invited_at, training_invitation_url,

@@ -18,6 +18,7 @@ export interface NurseApplication {
   goal?: string
   hours_per_month?: string
   source?: string
+  referral?: string | null
   email_verified: boolean
   status: string
   cohort: string

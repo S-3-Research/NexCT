@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import {
   ROLES, SPECIALTIES, SPECIAL_EXPERIENCE_OPTIONS, EXPERIENCE_OPTIONS, LANGUAGE_OPTIONS,
-  GOAL_OPTIONS, HOURS_OPTIONS, US_STATES,
+  GOAL_OPTIONS, HOURS_OPTIONS, US_STATES, REFERRAL_OPTIONS,
 } from '../../_config'
 
 type AppData = {
@@ -25,6 +25,7 @@ type AppData = {
   goal: string
   hours_per_month: string | number
   special_experience: string | string[]
+  referral?: string | null
 }
 
 type EditFormProps = {
@@ -107,6 +108,7 @@ export default function EditForm({ app, isSelectedLimited }: EditFormProps) {
       zip: fd.get('zip'),
       hours_per_month: fd.get('hours_per_month'),
       languages: fd.getAll('languages'),
+      referral: fd.get('referral') || null,
     }
     if (!isSelectedLimited) {
       body.role = fd.get('role')
@@ -211,6 +213,24 @@ export default function EditForm({ app, isSelectedLimited }: EditFormProps) {
                   label={h.label}
                   desc={h.desc}
                   defaultChecked={String(app.hours_per_month) === h.value}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className={labelClass}>
+              Were you referred by a partner organization?{' '}
+              <span className="font-normal opacity-50">(optional)</span>
+            </label>
+            <div className="grid grid-cols-2 gap-[10px] mt-1">
+              {REFERRAL_OPTIONS.map((r) => (
+                <RadioOption
+                  key={r}
+                  name="referral"
+                  value={r}
+                  label={r}
+                  defaultChecked={app.referral === r}
                 />
               ))}
             </div>
