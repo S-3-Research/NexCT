@@ -20,11 +20,10 @@ export default function AutonomySection() {
       const { top, bottom, height } = el.getBoundingClientRect()
       const vh = window.innerHeight
       const isMobile = window.innerWidth < 640
-      // mobile: enter earlier, no exit; desktop: original behaviour
+      // mobile: enter at viewport edge; desktop: enter at 85% — no exit on either
       const enterThreshold = isMobile ? 1.0 : 0.85
       const enterRaw = (vh * enterThreshold - top) / (height * 1.2)
-      const exitRaw = bottom / (vh * 0.65)
-      const raw = isMobile ? enterRaw : Math.min(enterRaw, exitRaw)
+      const raw = enterRaw
       setProgress(Math.min(1, Math.max(0, raw)))
     }
     window.addEventListener('scroll', update, { passive: true })
