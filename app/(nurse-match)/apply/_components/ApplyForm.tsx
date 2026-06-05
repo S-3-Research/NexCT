@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
 import {
   ROLES, SPECIALTIES, SPECIAL_EXPERIENCE_OPTIONS, EXPERIENCE_OPTIONS, LANGUAGE_OPTIONS,
@@ -39,13 +40,22 @@ function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input className={inputClass} {...props} />
 }
 
-function SelectInput(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
+function SelectInput({ children, ...props }: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <select
       className={`${inputClass} appearance-none`}
-      style={{ colorScheme: 'dark' }}
+      style={{ colorScheme: 'dark', backgroundColor: '#0d1a26', color: '#ffffff' }}
       {...props}
-    />
+    >
+      {/* Explicit option colors — prevents Edge/Windows from rendering white-on-white
+          when system is light mode but colorScheme is forced dark */}
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) return child
+        return React.cloneElement(child as React.ReactElement<React.OptionHTMLAttributes<HTMLOptionElement>>, {
+          style: { backgroundColor: '#0d1a26', color: '#ffffff' },
+        })
+      })}
+    </select>
   )
 }
 
