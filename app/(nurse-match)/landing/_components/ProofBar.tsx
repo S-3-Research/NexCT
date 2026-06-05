@@ -82,7 +82,7 @@ export default function ProofBar() {
               ) : item.type === 'headline' ? (
                 <div>
                   <div className="text-[1.05rem] font-black text-[#0d1a24] leading-[1.22] tracking-[0.03em] uppercase">
-                    {(item as any).headline}
+                    {(item as { headline: string }).headline}
                   </div>
                 </div>
               ) : (

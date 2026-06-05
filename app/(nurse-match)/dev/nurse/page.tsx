@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { MapPin, Zap, Home, Settings, ChevronDown } from 'lucide-react';
+import { MapPin, Zap, Home, Settings } from 'lucide-react';
 
 import {
   MOCK_NURSES,

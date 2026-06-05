@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  MapPin, Users, ClipboardList, Settings, Bell, Zap,
+  Users, ClipboardList, Settings, Bell, Zap,
   Map as MapIcon
 } from 'lucide-react';
 

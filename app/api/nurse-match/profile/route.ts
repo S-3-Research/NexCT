@@ -35,7 +35,7 @@ export async function GET() {
   }
 
   // 不返回 admin_notes 等敏感字段
-  const { admin_notes: _, ...safeData } = data
+  const { admin_notes: _adminNotes, ...safeData } = data
   return NextResponse.json(safeData)
 }
 

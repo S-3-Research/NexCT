@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { 
-  MapPin, Users, ClipboardList, Settings, Bell, CheckCircle, 
-  Plus, Search, Layers, Activity, Calendar, ChevronRight, Clock,
-  ShieldCheck, Map as MapIcon, Home, Heart, UserPlus, PlusSquare, X, 
+  MapPin, Users, Settings, CheckCircle, 
+  Plus, Search, Layers, Calendar,
+  ShieldCheck, X, 
   Mail, Zap, History, LucideIcon, ChevronDown
 } from 'lucide-react';
 
@@ -70,6 +70,7 @@ type PopupInstance = {
   remove: () => void;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare const mapboxgl: MapboxGLType;
 
 // Type definitions
@@ -1984,7 +1985,7 @@ export const ReadinessDashboard = ({ nurse }: { nurse: typeof MOCK_NURSE }) => (
   </div>
 );
 
-export const ActionCard = ({ icon: Icon, title, lastUpdate, accentColor, accentBg, confirmedLabel, onConfirm }: {
+export const ActionCard = ({ icon: Icon, title, lastUpdate, accentColor: _accentColor, accentBg, confirmedLabel, onConfirm }: {
   icon: React.ElementType; title: string; lastUpdate: number;
   accentColor: string; accentBg: string;
   confirmedLabel: string; onConfirm?: () => void;
@@ -2144,7 +2145,7 @@ export const NursePortal = ({ user, currentPage, setCurrentPage }: { user: Nurse
   );
 };
 
-export const NurseDashboard = ({ user, setCurrentPage, lastAvailabilityConfirm, lastRadiusConfirm, expiryDays, onConfirmAvailability }: {
+export const NurseDashboard = ({ user: _user, setCurrentPage, lastAvailabilityConfirm, lastRadiusConfirm, expiryDays, onConfirmAvailability }: {
   user: Nurse;
   setCurrentPage: (p: string) => void;
   lastAvailabilityConfirm: number;

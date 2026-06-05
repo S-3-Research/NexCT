@@ -234,6 +234,7 @@ export const InteractiveMapV2 = ({
       mapRef.current.addLayer({ id: 'selected-circle-outline', type: 'line', source: 'selected', paint: { 'line-color': cfg.color, 'line-width': 2, 'line-dasharray': [3, 3] } });
       mapRef.current.flyTo({ center: [activeAddr.lng, activeAddr.lat], zoom: 12, duration: 1000 });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addresses, selectedAddressId, onSelectAddress, removeLayers, removeSource]);
 
   // --- Update nurse markers ---
@@ -426,7 +427,7 @@ export const InteractiveMapV2 = ({
 };
 
 // Modified AdminMatchWorkspaceV2 - no assignment relationship
-export const AdminMatchWorkspaceV2 = ({ trials, setTrials, selectedAddrId, setSelectedAddrId, viewMode, setViewMode, selectedTrialId, setSelectedTrialId }: {
+export const AdminMatchWorkspaceV2 = ({ trials, setTrials: _setTrials, selectedAddrId, setSelectedAddrId, viewMode, setViewMode, selectedTrialId, setSelectedTrialId }: {
   trials: any[];
   setTrials: (trials: any[] | ((prev: any[]) => any[])) => void;
   selectedAddrId: string;
@@ -755,7 +756,7 @@ export const NursePortalV2 = ({ user, currentPage, setCurrentPage }: { user: any
   );
 };
 
-export const NurseDashboardV2 = ({ user, setCurrentPage, lastAvailabilityConfirm, lastRadiusConfirm, expiryDays, onConfirmAvailability }: {
+export const NurseDashboardV2 = ({ user: _user, setCurrentPage, lastAvailabilityConfirm, lastRadiusConfirm, expiryDays, onConfirmAvailability }: {
   user: any;
   setCurrentPage: (p: string) => void;
   lastAvailabilityConfirm: number;

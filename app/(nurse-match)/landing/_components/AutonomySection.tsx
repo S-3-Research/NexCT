@@ -17,7 +17,7 @@ export default function AutonomySection() {
     const update = () => {
       const el = sectionRef.current
       if (!el) return
-      const { top, bottom, height } = el.getBoundingClientRect()
+      const { top, height } = el.getBoundingClientRect()
       const vh = window.innerHeight
       const isMobile = window.innerWidth < 640
       // mobile: enter at viewport edge; desktop: enter at 85% — no exit on either

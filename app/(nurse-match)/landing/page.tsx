@@ -1,7 +1,5 @@
-import Ticker from './_components/Ticker'
 import HeroSection from './_components/HeroSection'
 import ProofBar from './_components/ProofBar'
-import EmotionalSection from './_components/EmotionalSection'
 import WhatYouGetSection from './_components/WhatYouGetSection'
 import AutonomySection from './_components/AutonomySection'
 import WhoQualifiesSection from './_components/WhoQualifiesSection'
