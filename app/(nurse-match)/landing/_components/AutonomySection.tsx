@@ -19,11 +19,12 @@ export default function AutonomySection() {
       if (!el) return
       const { top, bottom, height } = el.getBoundingClientRect()
       const vh = window.innerHeight
-      // enter: section top slides into 85% of viewport
-      const enterRaw = (vh * 0.85 - top) / (height * 1.2)
-      // exit: section bottom leaves viewport top — retract when bottom < 45% vh
+      const isMobile = window.innerWidth < 640
+      // mobile: enter earlier, no exit; desktop: original behaviour
+      const enterThreshold = isMobile ? 1.0 : 0.85
+      const enterRaw = (vh * enterThreshold - top) / (height * 1.2)
       const exitRaw = bottom / (vh * 0.65)
-      const raw = Math.min(enterRaw, exitRaw)
+      const raw = isMobile ? enterRaw : Math.min(enterRaw, exitRaw)
       setProgress(Math.min(1, Math.max(0, raw)))
     }
     window.addEventListener('scroll', update, { passive: true })

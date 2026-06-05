@@ -33,7 +33,7 @@ export default function ScarcitySection() {
           Why It Matters
         </div>
         <h2
-          style={{ opacity: p, transform: `translateY(${(1 - p) * 20}px)`, transitionDelay: '0.05s' }}
+          style={{ opacity: p, transform: `translateY(${(1 - p) * 20}px)`, transitionDelay: '0.00s' }}
           className="font-[family-name:var(--font-display,'DM_Serif_Display',Georgia,serif)] text-[clamp(1.6rem,2.5vw,1.8rem)] mb-[10px] leading-[1.2]"
         >
           Too Many Patients Lack Access to Clinical Innovation.
