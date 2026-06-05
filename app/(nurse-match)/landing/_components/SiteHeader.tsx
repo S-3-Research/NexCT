@@ -29,11 +29,11 @@ export default function SiteHeader() {
             />
             {/* Text — hidden on mobile */}
             <div className="hidden sm:block">
-              <div className="text-[11px] uppercase text-gray-500 mb-0 font-bold leading-tight">
+              <div className="text-[11px] uppercase text-gray-700 mb-0 font-bold leading-tight">
                 Research-Ready Clinician Program
               </div>
-              <div className="text-[11px] text-gray-400">
-                by ACHIEVE Clinical and S-3 Research
+              <div className="text-[11px] text-gray-600">
+                by ACHIEVE and S-3 Research
               </div>
             </div>
           </div>
