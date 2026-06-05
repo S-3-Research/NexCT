@@ -32,7 +32,7 @@ export default async function NurseStatusPage({
   // 有 session：读取申请数据
   const { data: app } = await supabase
     .from('nurse_applications')
-    .select('first_name, last_name, email, status, email_verified, applied_at, cohort, applicant_can_edit')
+    .select('first_name, last_name, email, status, applied_at, cohort, applicant_can_edit')
     .eq('id', session.applicationId)
     .single()
 
@@ -58,18 +58,6 @@ export default async function NurseStatusPage({
       </header>
 
       <main className="max-w-[640px] mx-auto px-6 py-16">
-
-        {/* Email not verified warning */}
-        {!app.email_verified && (
-          <div className="bg-[#d4920a]/[0.07] border border-[#d4920a]/[0.22] rounded-[8px] px-5 py-4 mb-8">
-            <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-[#d4920a] mb-1">
-              ⚠ Email not yet confirmed
-            </p>
-            <p className="text-[13px] leading-[1.5] text-white/45">
-              Please check your inbox and click the confirmation link to verify your email address.
-            </p>
-          </div>
-        )}
 
         {/* Status card */}
         <div className="bg-[#0c2236] border border-white/[0.07] rounded-[10px] p-8 mb-6">

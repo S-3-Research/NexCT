@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { signMagicToken } from '@/lib/nurseToken'
-import { sendVerificationEmail } from '@/lib/email/sendVerificationEmail'
+import { sendSubmissionConfirmationEmail } from '@/lib/email/sendSubmissionConfirmationEmail'
 import { sendAlreadyRegisteredEmail } from '@/lib/email/sendAlreadyRegisteredEmail'
 
 export async function POST(req: NextRequest) {
@@ -69,6 +69,7 @@ export async function POST(req: NextRequest) {
         source,
         referral: referral || null,
         special_experience: Array.isArray(specialExperience) ? specialExperience : specialExperience ? [specialExperience] : [],
+        email_verified: true,
       })
       .select('id')
       .single()
@@ -78,10 +79,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Failed to save application' }, { status: 500 })
     }
 
-    // 发验证邮件
+    // 发确认邮件（附状态页链接）
     const token = await signMagicToken({ applicationId: data.id, email: normalizedEmail })
-    const magicLink = `${appUrl}/api/nurse-match/verify?token=${token}`
-    await sendVerificationEmail({ to: normalizedEmail, firstName, magicLink })
+    const statusLink = `${appUrl}/api/nurse-match/verify?token=${token}`
+    await sendSubmissionConfirmationEmail({ to: normalizedEmail, firstName, statusLink })
 
     return NextResponse.json({ success: true })
   } catch (err) {

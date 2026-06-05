@@ -80,6 +80,16 @@ export function AdminShell({ initialNurses }: Props) {
     }
   }
 
+  const handleDelete = async (id: string) => {
+    const res = await fetch(`/api/nurse-match/admin/delete-application?id=${id}`, { method: 'DELETE' })
+    if (res.ok) {
+      setNurses((prev) => prev.filter((n) => n.id !== id))
+      if (selectedId === id) setSelectedId(null)
+    } else {
+      alert('Failed to delete application. Please try again.')
+    }
+  }
+
   return (
     <div className="flex flex-col h-screen bg-white font-sans text-slate-900 select-none overflow-hidden">
       {/* Header */}
@@ -179,6 +189,7 @@ export function AdminShell({ initialNurses }: Props) {
                 nurses={filtered}
                 selectedId={selectedId}
                 onSelect={(n) => setSelectedId(n.id === selectedId ? null : n.id)}
+                onDelete={handleDelete}
               />
             </div>
 

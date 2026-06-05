@@ -472,20 +472,22 @@ function Confirmation() {
         Thank you for applying. Your application has been received and will be reviewed as part of
         our rolling selection process.
       </p>
+      {/* No action needed banner */}
       <div
-        className="inline-block font-bold text-[12px] tracking-[.16em] uppercase
-          px-5 py-[10px] rounded-[6px] border mb-8"
+        className="inline-flex items-center gap-2 font-bold text-[13px] tracking-[.12em] uppercase
+          px-5 py-[11px] rounded-[8px] border mb-8"
         style={{
-          background: 'rgba(26,140,158,0.08)',
-          borderColor: 'rgba(26,140,158,0.25)',
-          color: '#1a8c9e',
+          background: 'rgba(240,169,34,0.10)',
+          borderColor: 'rgba(240,169,34,0.35)',
+          color: '#f0a922',
         }}
       >
-        Early applicants are reviewed first — you&apos;re ahead.
+        <span style={{ fontSize: 16 }}>✔</span>
+        No further action needed
       </div>
       <div className="flex flex-col gap-[10px] max-w-[400px] mx-auto mb-8">
         {[
-          { icon: '📬', text: <>You&apos;ll receive a confirmation email shortly. <strong style={{ color: 'white' }}>Check your inbox.</strong></> },
+          { icon: '📬', text: <>A confirmation email is on its way with a <strong style={{ color: 'white' }}>link to your status page.</strong></> },
           { icon: '⏱', text: <>Selections are reviewed on a <strong style={{ color: 'white' }}>rolling basis.</strong> Early applicants are prioritized.</> },
           { icon: '✦', text: <>If selected, you&apos;ll be notified with next steps to begin your <strong style={{ color: 'white' }}>Research-Ready Clinician™ training.</strong></> },
         ].map((item, i) => (

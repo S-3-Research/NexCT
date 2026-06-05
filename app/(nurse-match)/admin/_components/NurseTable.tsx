@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronRight, Mail, MapPin, CheckCircle2, XCircle } from 'lucide-react'
+import { ChevronRight, Mail, MapPin, CheckCircle2, XCircle, Trash2 } from 'lucide-react'
 import { StatusBadge } from './StatusBadge'
 import type { NurseApplication } from './types'
 
@@ -8,6 +8,7 @@ interface Props {
   nurses: NurseApplication[]
   selectedId: string | null
   onSelect: (n: NurseApplication) => void
+  onDelete: (id: string) => void
 }
 
 function fmt(iso?: string) {
@@ -15,7 +16,7 @@ function fmt(iso?: string) {
   return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-export function NurseTable({ nurses, selectedId, onSelect }: Props) {
+export function NurseTable({ nurses, selectedId, onSelect, onDelete }: Props) {
   if (nurses.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center flex-1 py-20 text-slate-400">
@@ -48,7 +49,7 @@ export function NurseTable({ nurses, selectedId, onSelect }: Props) {
             <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider whitespace-nowrap">
               Applied
             </th>
-            <th className="px-4 py-3 w-8" />
+            <th className="px-4 py-3 w-16" />
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-100">
@@ -123,12 +124,27 @@ export function NurseTable({ nurses, selectedId, onSelect }: Props) {
                   {fmt(nurse.applied_at)}
                 </td>
 
-                {/* Arrow */}
+                {/* Actions */}
                 <td className="px-4 py-3.5">
-                  <ChevronRight
-                    size={14}
-                    className={`transition-colors ${isSelected ? 'text-blue-500' : 'text-slate-300 group-hover:text-slate-400'}`}
-                  />
+                  <div className="flex items-center gap-1 justify-end">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        if (window.confirm(`Delete application for ${nurse.first_name} ${nurse.last_name}? This cannot be undone.`)) {
+                          onDelete(nurse.id)
+                        }
+                      }}
+                      title="Delete application"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-red-50
+                                 text-slate-300 hover:text-red-500"
+                    >
+                      <Trash2 size={13} />
+                    </button>
+                    <ChevronRight
+                      size={14}
+                      className={`transition-colors ${isSelected ? 'text-blue-500' : 'text-slate-300 group-hover:text-slate-400'}`}
+                    />
+                  </div>
                 </td>
               </tr>
             )
