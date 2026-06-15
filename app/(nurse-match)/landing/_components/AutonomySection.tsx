@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 const TESTIMONIALS = [
   { quote: 'It was the best thing I could have done for my career. I finally felt like my skills were being used at their full potential.', attrib: 'RN, Clinical Research Transition', sub: '10-year bedside RN' },
   { quote: 'Working on something that could potentially change the future of standard care is rewarding.', attrib: 'RN, Decentralized Trials', sub: 'ICU RN — Clinical Research Nurse' },
-  { quote: "It's a very nice way to be able to see the outcomes and improve patient lives.", attrib: 'Research Nurse', sub: 'Community Health RN' },
+  { quote: "Adding research to my practice has been incredibly fulfilling — it lets me contribute to medicine beyond the exam room.", attrib: 'MD, Clinical Research', sub: 'Primary Care Physician' },
+
 ]
 
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3)

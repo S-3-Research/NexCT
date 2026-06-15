@@ -11,7 +11,7 @@ export default function ApplySidebar() {
         <p
           className="font-extrabold text-[11px] tracking-[.18em] uppercase mb-[10px] text-[#1a8c9e]"
         >
-          ◆ Cohort 4 Closes In
+          ◆ Inaugural Cohort Closes In
         </p>
         <Countdown size="sm" />
         <p className="text-[11px] leading-[1.5] mt-2 text-white/30">

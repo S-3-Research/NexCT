@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 const FAQ_LEFT = [
-  { q: 'Who is eligible to apply?', a: 'Active U.S.-based RNs and NPs are welcome to apply. Clinicians from all backgrounds — including bedside, community health, home health, infusion, oncology, ICU, med-surg, and public health — are encouraged to apply. No prior research experience is required.' },
+  { q: 'Who is eligible to apply?', a: 'Active U.S.-based licensed clinicians are welcome to apply — including RNs, NPs, PharmDs, MDs, and other healthcare professionals. Clinicians from all backgrounds — including bedside, community health, home health, infusion, oncology, ICU, med-surg, and public health — are encouraged to apply. No prior research experience is required.' },
   { q: 'Is this a job?', a: 'No. This is a sponsored training program that certifies you and makes you eligible for paid, project-based clinical research opportunities. You decide when and how often you participate based on your availability.' },
   { q: 'Are there paid opportunities?', a: 'Yes. Once certified, you become eligible for paid local research opportunities. Opportunities vary by geography, specialty, and study availability. You are matched to nearby opportunities — no searching required.' },
   { q: 'Can I be contacted for local or nearby opportunities?', a: 'Yes. Once you complete the program and earn your Research-Ready Clinician™ certificate, you can be matched directly to nearby research opportunities in your community.' },

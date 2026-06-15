@@ -16,7 +16,7 @@ export default function ApplyPage() {
             ACHIEVE
           </div>
           <div className="text-[9px] sm:text-[10px] font-bold tracking-[0.18em] sm:tracking-[0.22em] uppercase text-[#1a8c9e]">
-            Research-Ready Clinician™ · Cohort 4
+            Research-Ready Clinician™ · Inaugural
           </div>
         </div>
         <Link
@@ -40,7 +40,7 @@ export default function ApplyPage() {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
             <div className="w-1.5 h-1.5 rounded-full bg-[#1a8c9e]" />
             <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] sm:tracking-[0.24em] uppercase text-[#1a8c9e]">
-              Cohort 4 · Selection Now Open
+              Inaugural · Selection Now Open
             </span>
           </div>
           <h1
@@ -61,7 +61,7 @@ export default function ApplyPage() {
           {/* Mobile-only countdown — hidden on desktop where sidebar shows it */}
           <div className="sm:hidden mt-5 flex flex-col items-center gap-2">
             <p className="font-extrabold text-[10px] tracking-[.18em] uppercase text-[#1a8c9e]">
-              ◆ Cohort 4 Closes In
+              ◆ Inaugural Cohort Closes In
             </p>
             <Countdown size="sm" />
           </div>

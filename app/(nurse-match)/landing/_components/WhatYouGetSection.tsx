@@ -9,7 +9,7 @@ const VALUE_CARDS = [
 ]
 
 const META_ITEMS = [
-  { icon: '👥', label: 'Who can apply?', body: 'Active U.S.-based RN or NP licenses welcome. All backgrounds — including those new to research.' },
+  { icon: '👥', label: 'Who can apply?', body: 'Active U.S.-based RN, NP, PharmD, MD, and other licensed clinicians welcome. All backgrounds — including those new to research.' },
   { icon: '⚡', label: 'How selection works', body: 'Applications reviewed on a rolling basis. Early applicants receive priority for the 30 sponsored seats.' },
   { icon: '🛡', label: 'No risk to your current role', body: 'Training is fully asynchronous and self-paced. Keep your job — add research on your own terms.' },
 ]

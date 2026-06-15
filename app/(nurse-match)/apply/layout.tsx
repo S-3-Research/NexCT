@@ -27,7 +27,7 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   title: 'Apply for Selection | ACHIEVE Research-Ready Clinician™',
   description:
-    'Apply for Cohort 4 of the ACHIEVE Research-Ready Clinician Program. 30 fully sponsored seats. Takes 3 minutes. No prior research experience required.',
+    'Apply for the inaugural cohort of the ACHIEVE Research-Ready Clinician Program. 30 fully sponsored seats. Takes 3 minutes. No prior research experience required.',
 }
 
 export default function LandingLayout({ children }: { children: React.ReactNode }) {

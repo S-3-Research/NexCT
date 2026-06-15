@@ -40,7 +40,7 @@ export default function WhoQualifiesSection() {
           You Already Have the Foundation
         </h2>
         <p className="text-center text-[#6b7c8d] text-[17px] sm:text-[15px] mb-8">
-          The skills you use every day as a nurse are exactly what clinical research needs.
+          The skills you use every day as a clinician are exactly what clinical research needs.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {FOUNDATION_ITEMS.map((item) => (
