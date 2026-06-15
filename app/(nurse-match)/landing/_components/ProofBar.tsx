@@ -106,9 +106,19 @@ export default function ProofBar() {
               )}
 
               {/* Description */}
-              <p className="text-[15px] sm:text-[14px] text-[#0d1a24]/90 leading-[1.6] font-normal">
-                {item.label}
-              </p>
+              {item.type === 'headline' ? (
+                <p className="text-[15px] sm:text-[14px] text-[#0d1a24]/90 leading-[1.6] font-normal">
+                  <span className="font-bold">Full tuition value:{' '}</span>
+                  <span className="inline-flex items-center bg-[#0d1a24] text-white text-[11px] px-3.5 py-[2px] rounded-full font-extrabold tracking-widest uppercase align-middle mx-0.5">
+                    $3,000
+                  </span>{' '}
+                  <span className="font-semibold text-[#0d1a24]">Fully sponsored</span> — no out-of-pocket cost for the inaugural cohort.
+                </p>
+              ) : (
+                <p className="text-[15px] sm:text-[14px] text-[#0d1a24]/90 leading-[1.6] font-normal">
+                  {item.label}
+                </p>
+              )}
             </div>
           ))}
         </div>
