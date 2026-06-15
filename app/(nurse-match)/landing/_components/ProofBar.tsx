@@ -95,7 +95,7 @@ export default function ProofBar() {
                         className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-[11px] font-bold"
                         style={{ backgroundColor: color, marginLeft: j === 0 ? 0 : -10 }}
                       >
-                        {['RN', 'LN', 'MN', 'SN', '+'][j]}
+                        {['RN', 'LN', 'MD', 'DO', '+'][j]}
                       </div>
                     ))}
                   </div>
