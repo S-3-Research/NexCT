@@ -11,7 +11,7 @@ const supabase = createClient(
 const STATUS_CONFIG: Record<string, { label: string; color: string; desc: string }> = {
   pending:    { label: 'Under Review',    color: '#1a8c9e', desc: 'Your application has been received and is in our review queue. Early applicants are reviewed first.' },
   reviewing:  { label: 'In Review',       color: '#d4920a', desc: 'Our team is actively reviewing your application. You will hear from us within 5–7 business days.' },
-  selected:   { label: 'Selected ✦',      color: '#4ade80', desc: 'Congratulations! You have been selected for Cohort 4. Check your inbox for next steps.' },
+  selected:   { label: 'Selected ✦',      color: '#4ade80', desc: 'Congratulations! You have been selected for the inaugural cohort. Check your inbox for next steps.' },
   waitlisted: { label: 'Waitlisted',      color: '#94a3b8', desc: 'You are on our waitlist. We will notify you if a spot opens up.' },
   rejected:   { label: 'Not Selected',    color: 'rgba(255,255,255,0.3)', desc: 'Thank you for applying. We were unable to offer you a spot in this cohort.' },
 }

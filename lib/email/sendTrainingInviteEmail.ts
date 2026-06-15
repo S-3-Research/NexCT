@@ -47,7 +47,7 @@ function buildEmailHtml({ firstName, trainingUrl }: { firstName: string; trainin
                 ACHIEVE
               </div>
               <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#0B6E78;margin-top:2px;">
-                Research-Ready Clinician™ · Cohort 4
+                Research-Ready Clinician™ · Inaugural Cohort
               </div>
             </td>
           </tr>
@@ -63,7 +63,7 @@ function buildEmailHtml({ firstName, trainingUrl }: { firstName: string; trainin
                 Congratulations, ${firstName}.
               </h1>
               <p style="margin:0 0 28px 0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.55);">
-                You've been selected to move forward in the ACHIEVE Cohort 4 program.
+                You've been selected to move forward in the inaugural ACHIEVE cohort program.
                 Your next step is to complete the Research-Ready Clinician™ training module.
                 Click the button below to begin.
               </p>

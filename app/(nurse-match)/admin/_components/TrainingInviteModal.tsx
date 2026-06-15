@@ -10,7 +10,7 @@ interface Props {
   onSuccess: (updated: NurseApplication) => void
 }
 
-const PLACEHOLDER_URL = 'https://training.achieve.org/cohort-4'
+const PLACEHOLDER_URL = 'https://training.achieve.org/inaugural'
 
 export function TrainingInviteModal({ nurse, onClose, onSuccess }: Props) {
   const [trainingUrl, setTrainingUrl] = useState(nurse.training_invitation_url || '')

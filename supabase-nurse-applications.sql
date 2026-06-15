@@ -18,7 +18,7 @@ create table public.nurse_applications (
   source text null,
   email_verified boolean not null default false,
   status text not null default 'pending'::text,
-  cohort text not null default 'cohort-4'::text,
+  cohort text not null default 'inaugural'::text,
   applied_at timestamp with time zone not null default now(),
   verified_at timestamp with time zone null,
   reviewed_at timestamp with time zone null,

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { sendTrainingInviteEmail } from '@/lib/email/sendTrainingInviteEmail'
 
-const TRAINING_URL_PLACEHOLDER = 'https://training.achieve.org/cohort-4'
+const TRAINING_URL_PLACEHOLDER = 'https://training.achieve.org/inaugural'
 
 export async function POST(req: NextRequest) {
   const supabase = createClient(

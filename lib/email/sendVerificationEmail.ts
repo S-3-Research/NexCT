@@ -47,7 +47,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
                 ACHIEVE
               </div>
               <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#0B6E78;margin-top:2px;">
-                Research-Ready Clinician™ · Cohort 4
+                Research-Ready Clinician™ · Inaugural Cohort
               </div>
             </td>
           </tr>
@@ -63,7 +63,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
                 Hi ${firstName}, confirm your email.
               </h1>
               <p style="margin:0 0 28px 0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.55);">
-                We received your application for ACHIEVE Cohort 4. Click the button below
+                We received your application for the inaugural ACHIEVE cohort. Click the button below
                 to confirm your email address and secure your place in the review queue.
               </p>
 

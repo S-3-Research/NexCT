@@ -16,7 +16,7 @@ export async function sendSubmissionConfirmationEmail({
       Destination: { ToAddresses: [to] },
       ReplyToAddresses: [SES_REPLY_TO],
       Message: {
-        Subject: { Data: 'Application Received — ACHIEVE Cohort 4', Charset: 'UTF-8' },
+        Subject: { Data: 'Application Received — ACHIEVE Inaugural Cohort', Charset: 'UTF-8' },
         Body: { Html: { Data: buildEmailHtml({ firstName, statusLink }), Charset: 'UTF-8' } },
       },
     }))
@@ -47,7 +47,7 @@ function buildEmailHtml({ firstName, statusLink }: { firstName: string; statusLi
                 ACHIEVE
               </div>
               <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#0B6E78;margin-top:2px;">
-                Research-Ready Clinician™ · Cohort 4
+                Research-Ready Clinician™ · Inaugural Cohort
               </div>
             </td>
           </tr>
@@ -63,7 +63,7 @@ function buildEmailHtml({ firstName, statusLink }: { firstName: string; statusLi
                 Hi ${firstName}, you're in the queue.
               </h1>
               <p style="margin:0 0 28px 0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.55);">
-                Your application for ACHIEVE Cohort 4 has been received and entered into our
+                Your application for the inaugural ACHIEVE cohort has been received and entered into our
                 rolling review queue. Early applicants are reviewed first — you're ahead.
               </p>
 

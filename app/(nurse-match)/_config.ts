@@ -4,7 +4,7 @@
    ========================================================= */
 
 export const COHORT = {
-  name: 'Cohort 4',
+  name: 'Inaugural Cohort',
   seats: 30,
   closeDate: new Date('2026-07-31T23:59:59'),
   tuitionValue: '$3,000',
@@ -131,6 +131,8 @@ export const ROLES = [
   'BSN, RN',
   'MSN, RN',
   'Nurse Practitioner (NP)',
+  'PharmD',
+  'MD/DO',
   'Other Clinical Role',
 ]
 

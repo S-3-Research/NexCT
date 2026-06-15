@@ -41,7 +41,7 @@ function buildEmailHtml({ firstName, magicLink }: { firstName: string; magicLink
             <td style="padding:0 0 28px 0;text-align:center;">
               <div style="font-size:22px;font-weight:700;letter-spacing:.05em;color:#C49A1A;">ACHIEVE</div>
               <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#0B6E78;margin-top:2px;">
-                Research-Ready Clinician™ · Cohort 4
+                Research-Ready Clinician™ · Inaugural Cohort
               </div>
             </td>
           </tr>
