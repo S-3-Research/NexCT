@@ -12,6 +12,7 @@
     "@aws-sdk/client-ses": "^3.1048.0",
     "@supabase/supabase-js": "^2.87.1",
     "@types/mapbox-gl": "^3.4.1",
+    "@vercel/analytics": "^2.0.1",
     "jose": "^6.2.3",
     "lucide-react": "^0.563.0",
     "mapbox-gl": "^3.23.1",
