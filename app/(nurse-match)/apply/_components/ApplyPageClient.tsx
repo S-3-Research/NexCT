@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import ApplyForm from './ApplyForm'
 import ApplySidebar from './ApplySidebar'
+import { trackFunnelEvent } from '@/lib/tracking/funnelTracker'
 
 type Step = 0 | 1 | 2 | 3 | 4
 
@@ -21,6 +22,14 @@ export default function ApplyPageClient() {
 
   const anchorRef = useRef<HTMLDivElement>(null)
 
+  // 点击 Apply 直接进入表单 step 1 —— page_view 与 step_view(1) 等价，
+  // 因此每次 step 变化（含首次挂载）都上报 step_view，无需单独的 apply page_view。
+  useEffect(() => {
+    if (done) return
+    trackFunnelEvent({ eventType: 'step_view', page: 'apply', step: step + 1 })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step])
+
   const scrollToFormTop = () => {
     // Defer until after React re-render + browser paint.
     // iOS Safari silently drops scrollTo() calls made synchronously during a state update.
@@ -31,7 +40,11 @@ export default function ApplyPageClient() {
     }, 50)
   }
 
-  const next = () => { setStep((s) => Math.min(s + 1, 4) as Step); scrollToFormTop() }
+  const next = () => {
+    trackFunnelEvent({ eventType: 'step_complete', page: 'apply', step: step + 1 })
+    setStep((s) => Math.min(s + 1, 4) as Step)
+    scrollToFormTop()
+  }
   const back = () => { setStep((s) => Math.max(s - 1, 0) as Step); scrollToFormTop() }
   const goTo   = (i: Step) => { if (i <= step) setStep(i) }
 
@@ -57,6 +70,7 @@ export default function ApplyPageClient() {
         setAlreadyRegistered(true)
         return
       }
+      trackFunnelEvent({ eventType: 'form_submit', page: 'apply', step: 5 })
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {

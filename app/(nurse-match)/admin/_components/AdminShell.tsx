@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Zap, Users, RefreshCw, Table2, Map, MapPin } from 'lucide-react'
+import { Zap, Users, RefreshCw, Table2, Map, MapPin, BarChart3 } from 'lucide-react'
 import { FilterBar, DEFAULT_FILTERS, type Filters } from './FilterBar'
 import { NurseTable } from './NurseTable'
 import { NurseDrawer } from './NurseDrawer'
@@ -117,6 +117,15 @@ export function AdminShell({ initialNurses }: Props) {
         </div>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/admin/analytics"
+            className="flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium text-slate-500
+                       hover:text-slate-700 hover:bg-slate-100 transition-colors"
+          >
+            <BarChart3 size={13} />
+            Analytics
+          </Link>
+
           {/* View toggle */}
           <div className="flex items-center bg-slate-100 rounded-lg p-0.5 border border-slate-200">
             <button

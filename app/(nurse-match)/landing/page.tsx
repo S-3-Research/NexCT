@@ -7,10 +7,12 @@ import ScarcitySection from './_components/ScarcitySection'
 import StepsSection from './_components/StepsSection'
 import LandingFooter from './_components/LandingFooter'
 import BottomCTA from './_components/BottomCTA'
+import PageViewTracker from './_components/PageViewTracker'
 
 export default function LandingPage() {
   return (
     <>
+      <PageViewTracker />
       {/* <Ticker /> */}
       <HeroSection />
       <ProofBar />
