@@ -53,31 +53,69 @@ interface GeoResult {
   country: string | null
   lat: number | null
   lng: number | null
+  /** 调试用：说明 geo 数据来源或失败原因 */
+  status:
+    | 'vercel_headers'
+    | 'ipapi_success'
+    | 'ipapi_failed'
+    | 'ipapi_error'
+    | 'private_or_local_ip'
+    | 'missing_ip'
 }
 
-async function lookupGeo(ip: string): Promise<GeoResult> {
-  const empty: GeoResult = { city: null, region: null, country: null, lat: null, lng: null }
-  if (!ip || isPrivateOrLocalIp(ip)) return empty
+/** 优先读取 Vercel 边缘网络自带的地理位置 header（无网络调用，最快最稳） */
+function lookupGeoFromVercelHeaders(req: NextRequest): GeoResult | null {
+  const city = req.headers.get('x-vercel-ip-city')
+  const country = req.headers.get('x-vercel-ip-country')
+  const region = req.headers.get('x-vercel-ip-country-region')
+  const lat = req.headers.get('x-vercel-ip-latitude')
+  const lng = req.headers.get('x-vercel-ip-longitude')
+
+  if (!city && !country && !lat && !lng) return null // 本地开发无此 header，走 fallback
+
+  return {
+    city: city ? decodeURIComponent(city) : null,
+    region: region ? decodeURIComponent(region) : null,
+    country: country ?? null,
+    lat: lat ? Number(lat) : null,
+    lng: lng ? Number(lng) : null,
+    status: 'vercel_headers',
+  }
+}
+
+async function lookupGeoFromIpapi(ip: string): Promise<GeoResult> {
+  const empty: GeoResult = { city: null, region: null, country: null, lat: null, lng: null, status: 'missing_ip' }
+  if (!ip) return empty
+  if (isPrivateOrLocalIp(ip)) return { ...empty, status: 'private_or_local_ip' }
 
   try {
     // 免费 IP 地理位置查询，低 QPS（~50/天）完全在免费额度内
     const res = await fetch(`https://ipapi.co/${ip}/json/`, {
       signal: AbortSignal.timeout(3000),
     })
-    if (!res.ok) return empty
+    if (!res.ok) return { ...empty, status: 'ipapi_failed' }
     const data = await res.json()
-    if (data.error) return empty
+    if (data.error) return { ...empty, status: 'ipapi_failed' }
     return {
       city: data.city ?? null,
       region: data.region ?? null,
       country: data.country_name ?? null,
       lat: typeof data.latitude === 'number' ? data.latitude : null,
       lng: typeof data.longitude === 'number' ? data.longitude : null,
+      status: 'ipapi_success',
     }
   } catch {
-    return empty
+    return { ...empty, status: 'ipapi_error' }
   }
 }
+
+/** Geo 解析入口：优先 Vercel headers，其次 ipapi.co fallback */
+async function lookupGeo(req: NextRequest, ip: string): Promise<GeoResult> {
+  const vercelGeo = lookupGeoFromVercelHeaders(req)
+  if (vercelGeo) return vercelGeo
+  return lookupGeoFromIpapi(ip)
+}
+
 
 export async function POST(req: NextRequest) {
   try {
@@ -95,7 +133,7 @@ export async function POST(req: NextRequest) {
 
     const ua = req.headers.get('user-agent') ?? ''
     const ip = extractIp(req)
-    const geo = await lookupGeo(ip ?? '')
+    const geo = await lookupGeo(req, ip ?? '')
 
     const { error } = await supabase.from('funnel_events').insert({
       project: 'nexct-nursematch',
@@ -115,7 +153,7 @@ export async function POST(req: NextRequest) {
       device_type: ua ? parseDeviceType(ua) : null,
       browser: ua ? parseBrowser(ua) : null,
       os: ua ? parseOS(ua) : null,
-      metadata: metadata ?? null,
+      metadata: { ...(metadata ?? {}), geo_lookup_status: geo.status },
       is_test: Boolean(isTest),
     })
 

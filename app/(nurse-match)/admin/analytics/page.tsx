@@ -18,7 +18,6 @@ export default async function AnalyticsPage() {
       device_type, browser, is_test, created_at
     `)
     .eq('project', 'nexct-nursematch')
-    .eq('is_test', false)
     .order('created_at', { ascending: true })
 
   if (error) {

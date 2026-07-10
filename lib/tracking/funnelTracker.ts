@@ -5,7 +5,7 @@
 
 const SESSION_KEY = 'nm_funnel_session'
 const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000 // 30 天
-const TEST_MODE_KEY = 'nm_test_mode'
+const TEST_MODE_KEY = 'nm_test_mode' // 'force_test' | 'force_live' | 未设置(auto)
 
 export type FunnelPage = 'landing' | 'apply'
 export type FunnelEventType = 'page_view' | 'step_view' | 'step_complete' | 'form_submit'
@@ -24,7 +24,7 @@ function generateSessionId(): string {
   return `sess_${Date.now()}_${Math.random().toString(36).slice(2)}`
 }
 
-/** 方案 1：自动识别开发/预览环境 */
+/** 方案 1：自动识别开发/预览环境（无 URL override 时的默认判断） */
 function isNonProductionEnv(): boolean {
   if (typeof window === 'undefined') return false
   const host = window.location.hostname
@@ -34,8 +34,10 @@ function isNonProductionEnv(): boolean {
 }
 
 /**
- * 方案 2a：手动测试模式开关。
- * 访问 URL 加 ?nm_test=1 开启（写入 localStorage 持久化），?nm_test=0 关闭。
+ * 方案 2a：手动测试模式开关，三态持久化到 localStorage：
+ * - ?nm_test=1 → 'force_test'：强制标记为测试流量（无论环境）
+ * - ?nm_test=0 → 'force_live'：强制标记为正式流量（即使在 localhost / preview，便于本地联调正式数据）
+ * - 不带参数时：读取已持久化的状态，否则回退到按环境自动判断（isNonProductionEnv）
  */
 function syncTestModeFromUrl(): void {
   if (typeof window === 'undefined') return
@@ -44,28 +46,26 @@ function syncTestModeFromUrl(): void {
   const value = params.get('nm_test')
   try {
     if (value === '1') {
-      window.localStorage.setItem(TEST_MODE_KEY, 'true')
+      window.localStorage.setItem(TEST_MODE_KEY, 'force_test')
     } else if (value === '0') {
-      window.localStorage.removeItem(TEST_MODE_KEY)
+      window.localStorage.setItem(TEST_MODE_KEY, 'force_live')
     }
   } catch {
     // ignore
   }
 }
 
-function isManualTestMode(): boolean {
-  if (typeof window === 'undefined') return false
+/** 判断当前流量是否应标记为测试流量：URL override 优先，其次是按环境自动判断 */
+function resolveIsTest(): boolean {
   syncTestModeFromUrl()
   try {
-    return window.localStorage.getItem(TEST_MODE_KEY) === 'true'
+    const mode = window.localStorage.getItem(TEST_MODE_KEY)
+    if (mode === 'force_test') return true
+    if (mode === 'force_live') return false
   } catch {
-    return false
+    // localStorage 不可用，降级为按环境自动判断
   }
-}
-
-/** 判断当前流量是否应标记为测试流量（开发/预览环境 或 手动开启测试模式） */
-function resolveIsTest(): boolean {
-  return isNonProductionEnv() || isManualTestMode()
+  return isNonProductionEnv()
 }
 
 /** 获取（或创建）匿名 session id，存储在 localStorage，30 天滑动过期 */

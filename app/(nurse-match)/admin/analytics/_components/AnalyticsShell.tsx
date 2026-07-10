@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, BarChart3, Trash2 } from 'lucide-react'
+import { ArrowLeft, BarChart3, Trash2, FlaskConical } from 'lucide-react'
 import { FunnelChart } from './FunnelChart'
 import { DailyTrendChart } from './DailyTrendChart'
 import { DeviceBreakdown } from './DeviceBreakdown'
@@ -24,18 +24,25 @@ const CLEANUP_OPTIONS = [
 export function AnalyticsShell({ events }: Props) {
   const [cleaning, setCleaning] = useState<number | null>(null)
   const [cleanupMsg, setCleanupMsg] = useState<string | null>(null)
+  const [showTestTraffic, setShowTestTraffic] = useState(false)
+
+  const visibleEvents = useMemo(
+    () => (showTestTraffic ? events : events.filter((e) => !e.is_test)),
+    [events, showTestTraffic],
+  )
+  const testEventCount = useMemo(() => events.filter((e) => e.is_test).length, [events])
 
   const kpis = useMemo(() => {
-    const landingViews = events.filter((e) => e.page === 'landing' && e.event_type === 'page_view').length
+    const landingViews = visibleEvents.filter((e) => e.page === 'landing' && e.event_type === 'page_view').length
     const applyStarts = new Set(
-      events.filter((e) => e.page === 'apply' && e.event_type === 'step_view' && e.step === 1).map((e) => e.session_id),
+      visibleEvents.filter((e) => e.page === 'apply' && e.event_type === 'step_view' && e.step === 1).map((e) => e.session_id),
     ).size
     const submissions = new Set(
-      events.filter((e) => e.page === 'apply' && e.event_type === 'form_submit').map((e) => e.session_id),
+      visibleEvents.filter((e) => e.page === 'apply' && e.event_type === 'form_submit').map((e) => e.session_id),
     ).size
     const completionRate = applyStarts > 0 ? Math.round((submissions / applyStarts) * 100) : 0
     return { landingViews, applyStarts, submissions, completionRate }
-  }, [events])
+  }, [visibleEvents])
 
   async function handleCleanup(minutes: number, label: string) {
     if (!confirm(`Delete all tracking events from the last ${label}? This cannot be undone.`)) return
@@ -76,6 +83,19 @@ export function AnalyticsShell({ events }: Props) {
         </div>
 
         <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => setShowTestTraffic((v) => !v)}
+            className={`flex items-center gap-1.5 h-7 px-2.5 rounded-lg text-[11px] font-medium transition-colors ${
+              showTestTraffic ? 'bg-amber-100 text-amber-700' : 'text-slate-500 hover:bg-slate-100'
+            }`}
+            title="Toggle visibility of test/dev traffic (marked via localhost, preview, or ?nm_test=1)"
+          >
+            <FlaskConical size={12} />
+            {showTestTraffic ? `Showing test data (${testEventCount})` : `Test data hidden (${testEventCount})`}
+          </button>
+
+          <div className="w-px h-5 bg-slate-200 mx-1" />
+
           <span className="flex items-center gap-1 text-[11px] text-slate-400 mr-1">
             <Trash2 size={12} />
             Clear test data:
@@ -111,22 +131,22 @@ export function AnalyticsShell({ events }: Props) {
           <KpiCard label="Completion Rate" value={`${kpis.completionRate}%`} accent />
         </div>
 
-        {events.length === 0 ? (
+        {visibleEvents.length === 0 ? (
           <div className="bg-white rounded-xl border border-slate-100 p-12 text-center text-slate-400 text-sm">
             No tracking data yet. Events will appear here as visitors browse the landing and apply pages.
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-6">
             <div className="col-span-2">
-              <DailyTrendChart events={events} />
+              <DailyTrendChart events={visibleEvents} />
             </div>
-            <FunnelChart events={events} />
-            <DeviceBreakdown events={events} />
+            <FunnelChart events={visibleEvents} />
+            <DeviceBreakdown events={visibleEvents} />
             <div className="col-span-2">
-              <AbandonmentTable events={events} />
+              <AbandonmentTable events={visibleEvents} />
             </div>
             <div className="col-span-2">
-              <LocationHeatmapDynamic events={events} />
+              <LocationHeatmapDynamic events={visibleEvents} />
             </div>
           </div>
         )}
