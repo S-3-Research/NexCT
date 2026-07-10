@@ -7,6 +7,7 @@ import { FunnelChart } from './FunnelChart'
 import { DailyTrendChart } from './DailyTrendChart'
 import { DeviceBreakdown } from './DeviceBreakdown'
 import { AbandonmentTable } from './AbandonmentTable'
+import { GeoTable } from './GeoTable'
 import { LocationHeatmapDynamic } from './LocationHeatmapDynamic'
 import type { FunnelEvent } from './types'
 
@@ -147,6 +148,9 @@ export function AnalyticsShell({ events }: Props) {
             </div>
             <div className="col-span-2">
               <LocationHeatmapDynamic events={visibleEvents} />
+            </div>
+            <div className="col-span-2">
+              <GeoTable events={visibleEvents} />
             </div>
           </div>
         )}
