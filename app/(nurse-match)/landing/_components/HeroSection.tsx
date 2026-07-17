@@ -49,11 +49,26 @@ export default function HeroSection() {
 
 
       {/* Announcement bar */}
-      <div className="hidden sm:inline w-full py-2 my-3 text-gray-500 text-center font-bold text-[12px] tracking-[0.04em] uppercase">
+      <div className="hidden sm:flex w-full py-2 my-3 items-center justify-center gap-2 text-gray-500 text-center font-bold text-[12px] tracking-[0.04em] uppercase">
         <span className="mr-1.5">★</span>
         <span>INAUGURAL COHORT NOW OPEN</span>
         <span className="hidden sm:inline"> — 30 SPONSORED SEATS AVAILABLE</span>
-        
+        <span className="mx-2 h-3 w-px bg-gray-400" aria-hidden="true" />
+        <span className="normal-case font-semibold tracking-normal text-gray-500">IN PARTNERSHIP WITH</span>
+        <a
+          href="https://www.nhhri.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative inline-block h-5 w-[110px] shrink-0"
+        >
+          <Image
+            src="/images/sponsors/nhhri-logo-blue.png"
+            alt="NHHRI — National Hispanic Health Research Institute"
+            width={2000}
+            height={400}
+            className="absolute left-0 top-1/2 h-20 w-auto max-w-none -translate-y-1/2 object-contain opacity-80"
+          />
+        </a>
       </div>
 
       {/* Fixed nav rendered at top: 90px — spacer reserves its visual space */}

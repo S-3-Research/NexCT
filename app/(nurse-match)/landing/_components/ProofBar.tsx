@@ -124,7 +124,7 @@ export default function ProofBar() {
         </div>
 
         {/* Nav buttons — bottom right */}
-        <div className="flex justify-end gap-2 mt-8">
+        <div className="flex justify-end gap-2 mt-4">
           <button
             onClick={() => scroll('left')}
             aria-label="Scroll left"

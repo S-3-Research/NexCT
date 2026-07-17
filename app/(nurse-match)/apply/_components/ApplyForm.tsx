@@ -60,8 +60,8 @@ function SelectInput({ children, ...props }: React.SelectHTMLAttributes<HTMLSele
 }
 
 function RadioOption({
-  name, value, label, desc, full = false,
-}: { name: string; value: string; label: string; desc?: string; full?: boolean }) {
+  name, value, label, desc, full = false, logoSrc, logoAlt,
+}: { name: string; value: string; label: string; desc?: string; full?: boolean; logoSrc?: string; logoAlt?: string }) {
   return (
     <label
       className={`flex items-start gap-3 px-4 py-[14px] border rounded-[6px] cursor-pointer
@@ -75,13 +75,19 @@ function RadioOption({
         value={value}
         className="mt-[2px] flex-shrink-0 w-4 h-4 accent-[#1a8c9e]"
       />
-      <span className="text-[14px] leading-[1.45] text-white/60">
-        {desc ? (
-          <>
-            <strong className="block mb-[2px] text-white">{label}</strong>
-            {desc}
-          </>
-        ) : label}
+      <span className="flex items-center gap-2 text-[14px] leading-[1.45] text-white/60">
+        {logoSrc && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={logoSrc} alt={logoAlt || ''} className="h-5 w-auto object-contain shrink-0" />
+        )}
+        <span>
+          {desc ? (
+            <>
+              <strong className="block mb-[2px] text-white">{label}</strong>
+              {desc}
+            </>
+          ) : label}
+        </span>
       </span>
     </label>
   )
@@ -415,7 +421,14 @@ function StepAvailability({
           </FieldLabel>
           <div className="grid grid-cols-2 gap-[10px] mt-1">
             {REFERRAL_OPTIONS.map((r) => (
-              <RadioOption key={r} name="referral" value={r} label={r} />
+              <RadioOption
+                key={r}
+                name="referral"
+                value={r}
+                label={r}
+                logoSrc={r === 'NHHRI' ? '/images/sponsors/nhhri-logo.png' : undefined}
+                logoAlt={r === 'NHHRI' ? 'NHHRI logo' : undefined}
+              />
             ))}
           </div>
         </div>

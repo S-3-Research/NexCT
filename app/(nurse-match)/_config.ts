@@ -206,7 +206,7 @@ export const SOURCE_OPTIONS = [
 ]
 
 export const REFERRAL_OPTIONS = [
-  'MedChi',
+  // 'MedChi',
   'NHHRI',
 ]
 

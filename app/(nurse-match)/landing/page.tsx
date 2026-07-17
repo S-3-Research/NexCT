@@ -1,5 +1,6 @@
 import HeroSection from './_components/HeroSection'
 import ProofBar from './_components/ProofBar'
+import PartnerStrip from './_components/PartnerStrip'
 import WhatYouGetSection from './_components/WhatYouGetSection'
 import AutonomySection from './_components/AutonomySection'
 import WhoQualifiesSection from './_components/WhoQualifiesSection'
@@ -16,6 +17,7 @@ export default function LandingPage() {
       {/* <Ticker /> */}
       <HeroSection />
       <ProofBar />
+      <PartnerStrip />
       <WhatYouGetSection />
       <AutonomySection />
       <WhoQualifiesSection />
