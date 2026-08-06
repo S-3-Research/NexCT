@@ -24,7 +24,8 @@ export default async function AdminPage() {
       license_type, license_number, license_state, license_expiration_date,
       license_verification_status, license_verified_at, license_verification_notes,
       eligible_for_matching, eligibility_updated_at, eligibility_notes,
-      latitude, longitude
+      latitude, longitude,
+      cv_url, cv_file_name
     `)
     .order('applied_at', { ascending: false })
 

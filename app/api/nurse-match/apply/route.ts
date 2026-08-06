@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
       motivationText, goal,
       hoursPerMonth, source, referral,
       specialExperience,
+      cvPath, cvFileName,
     } = body
 
     if (!firstName || !lastName || !email) {
@@ -69,6 +70,10 @@ export async function POST(req: NextRequest) {
         source,
         referral: referral || null,
         special_experience: Array.isArray(specialExperience) ? specialExperience : specialExperience ? [specialExperience] : [],
+        // cv_url stores the private Storage *path* (e.g. "uuid-name.pdf"), not a public URL —
+        // the bucket is private; admins fetch a short-lived signed URL on demand.
+        cv_url: cvPath || null,
+        cv_file_name: cvFileName || null,
         email_verified: true,
       })
       .select('id')

@@ -377,6 +377,108 @@ function StepMotivation({ onNext, onBack }: { onNext: (data: StepData) => void; 
   )
 }
 
+const CV_ACCEPT = '.pdf,.doc,.docx'
+const CV_ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx']
+const CV_MAX_SIZE_BYTES = 5 * 1024 * 1024 // 5MB
+
+function CvUploadField() {
+  const [fileName, setFileName] = React.useState<string | null>(null)
+  const [cvPath, setCvPath] = React.useState<string>('')
+  const [uploading, setUploading] = React.useState(false)
+  const [error, setError] = React.useState<string | null>(null)
+  const fileInputRef = React.useRef<HTMLInputElement>(null)
+
+  function reset() {
+    setFileName(null)
+    setCvPath('')
+    setError(null)
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
+
+  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    setError(null)
+    if (!file) return
+
+    const ext = `.${file.name.split('.').pop()?.toLowerCase() ?? ''}`
+    if (!CV_ALLOWED_EXTENSIONS.includes(ext)) {
+      setError('Please upload a PDF, DOC, or DOCX file.')
+      if (fileInputRef.current) fileInputRef.current.value = ''
+      return
+    }
+    if (file.size > CV_MAX_SIZE_BYTES) {
+      setError('File is too large. Maximum size is 5MB.')
+      if (fileInputRef.current) fileInputRef.current.value = ''
+      return
+    }
+
+    setUploading(true)
+    try {
+      const fd = new FormData()
+      fd.append('file', file)
+      const res = await fetch('/api/nurse-match/upload-cv', { method: 'POST', body: fd })
+      const json = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(json.error ?? 'Upload failed')
+      setCvPath(json.path)
+      setFileName(json.fileName ?? file.name)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Upload failed. Please try again.')
+      if (fileInputRef.current) fileInputRef.current.value = ''
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  return (
+    <div>
+      <FieldLabel>
+        Resume / CV{' '}
+        <span className="font-normal opacity-50">(optional)</span>
+      </FieldLabel>
+      <p className="text-[13px] leading-[1.6] text-white/50 mb-3">
+        If you would like to be reached out for career/job opportunities, please upload your CV.
+      </p>
+
+      <input type="hidden" name="cvPath" value={cvPath} readOnly />
+      <input type="hidden" name="cvFileName" value={fileName ?? ''} readOnly />
+
+      {fileName ? (
+        <div className="flex items-center justify-between gap-3 px-4 py-[13px] rounded-[6px] border border-[#1a8c9e]/40 bg-[#1a8c9e]/10">
+          <span className="text-[14px] text-white/80 truncate">📄 {fileName}</span>
+          <button
+            type="button"
+            onClick={reset}
+            className="flex-shrink-0 text-[12px] font-bold tracking-[.1em] uppercase text-white/40 hover:text-white transition-colors duration-200"
+          >
+            Remove
+          </button>
+        </div>
+      ) : (
+        <label
+          className={`flex items-center justify-center gap-2 px-4 py-[13px] rounded-[6px] border border-dashed
+            border-white/20 bg-white/[0.03] text-[14px] text-white/50 cursor-pointer
+            hover:border-[#1a8c9e]/40 hover:bg-[#1a8c9e]/[0.06] transition-all duration-200
+            ${uploading ? 'opacity-60 pointer-events-none' : ''}`}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept={CV_ACCEPT}
+            className="hidden"
+            onChange={handleFileChange}
+            disabled={uploading}
+          />
+          {uploading ? 'Uploading…' : '⬆ Choose file (PDF, DOC, DOCX — max 5MB)'}
+        </label>
+      )}
+
+      {error && (
+        <p className="text-[12px] mt-2 text-[#f87171]">⚠ {error}</p>
+      )}
+    </div>
+  )
+}
+
 function StepAvailability({
   onSubmit, onBack, submitting, submitError,
 }: {
@@ -432,6 +534,8 @@ function StepAvailability({
             ))}
           </div>
         </div>
+
+        <CvUploadField />
 
         {/* Preview */}
         <div className="p-[22px] rounded-[8px] border bg-[#d4920a]/[0.06] border-[#d4920a]/20">

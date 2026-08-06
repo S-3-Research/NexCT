@@ -53,6 +53,8 @@ create table public.nurse_applications (
   longitude double precision null,
   address text null,
   special_experience text[] null default '{}'::text[],
+  cv_url text null,
+  cv_file_name text null,
   constraint nurse_applications_pkey primary key (id),
   constraint nurse_applications_email_key unique (email)
 ) TABLESPACE pg_default;
@@ -73,3 +75,11 @@ where
 create trigger nurse_applications_updated_at BEFORE
 update on nurse_applications for EACH row
 execute FUNCTION update_updated_at ();
+
+-- Migration: optional CV upload (added for "apply" form last step).
+-- Run this against an existing database that predates the columns above:
+-- alter table public.nurse_applications add column if not exists cv_url text null;
+-- alter table public.nurse_applications add column if not exists cv_file_name text null;
+-- NOTE: `cv_url` stores the private Storage *path* (not a public URL) — the bucket
+-- `nexct-nursematch-cvs` must be created as PRIVATE (default). Admins fetch a
+-- short-lived signed URL on demand via /api/nurse-match/admin/cv-download.

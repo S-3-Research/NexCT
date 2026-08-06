@@ -31,6 +31,41 @@ function Field({ label, value }: { label: string; value?: string | null }) {
   )
 }
 
+function CvDownloadLink({ path, fileName }: { path: string; fileName?: string | null }) {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  async function handleClick(e: React.MouseEvent) {
+    e.preventDefault()
+    setError(null)
+    setLoading(true)
+    try {
+      const res = await fetch(`/api/nurse-match/admin/cv-download?path=${encodeURIComponent(path)}`)
+      const json = await res.json().catch(() => ({}))
+      if (!res.ok || !json.url) throw new Error(json.error ?? 'Failed to get download link')
+      window.open(json.url, '_blank', 'noopener,noreferrer')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to get download link')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={loading}
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline disabled:opacity-50"
+      >
+        📄 {loading ? 'Generating link…' : (fileName || 'Download CV')}
+      </button>
+      {error && <p className="text-[11px] text-red-500 mt-1">{error}</p>}
+    </div>
+  )
+}
+
 function WorkflowSelect({
   label,
   value,
@@ -418,6 +453,15 @@ export function NurseDrawer({ nurse, onClose, onUpdate }: Props) {
                 <div className="mt-3">
                   <Field label="Serves Underserved" value={nurse.serves_underserved} />
                 </div>
+              </section>
+              <hr className="border-slate-100" />
+              <section>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-3">Resume / CV</p>
+                {nurse.cv_url ? (
+                  <CvDownloadLink path={nurse.cv_url} fileName={nurse.cv_file_name} />
+                ) : (
+                  <p className="text-xs text-slate-400">Not provided</p>
+                )}
               </section>
               <hr className="border-slate-100" />
               <section>

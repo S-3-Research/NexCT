@@ -19,6 +19,8 @@ export interface NurseApplication {
   hours_per_month?: string
   source?: string
   referral?: string | null
+  cv_url?: string | null
+  cv_file_name?: string | null
   email_verified: boolean
   status: string
   cohort: string
