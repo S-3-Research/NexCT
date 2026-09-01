@@ -59,8 +59,8 @@ function CheckboxOption({ name, value, label, defaultChecked }: { name: string; 
   )
 }
 
-function RadioOption({ name, value, label, desc, defaultChecked }: {
-  name: string; value: string; label: string; desc?: string; defaultChecked?: boolean
+function RadioOption({ name, value, label, desc, defaultChecked, logoSrc, logoAlt }: {
+  name: string; value: string; label: string; desc?: string; defaultChecked?: boolean; logoSrc?: string; logoAlt?: string
 }) {
   return (
     <label
@@ -76,13 +76,19 @@ function RadioOption({ name, value, label, desc, defaultChecked }: {
         defaultChecked={defaultChecked}
         className="mt-[2px] flex-shrink-0 w-4 h-4 accent-[#1a8c9e]"
       />
-      <span className="text-[14px] leading-[1.45] text-white/60">
-        {desc ? (
-          <>
-            <strong className="block mb-[2px] text-white">{label}</strong>
-            {desc}
-          </>
-        ) : label}
+      <span className="text-[14px] leading-[1.45] text-white/60 flex items-center gap-2">
+        {logoSrc && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={logoSrc} alt={logoAlt || ''} className="h-5 w-auto object-contain shrink-0" />
+        )}
+        <span>
+          {desc ? (
+            <>
+              <strong className="block mb-[2px] text-white">{label}</strong>
+              {desc}
+            </>
+          ) : label}
+        </span>
       </span>
     </label>
   )
@@ -231,6 +237,8 @@ export default function EditForm({ app, isSelectedLimited }: EditFormProps) {
                   value={r}
                   label={r}
                   defaultChecked={app.referral === r}
+                  logoSrc={r === 'NHHRI' ? '/images/sponsors/nhhri-logo.png' : r === 'IIC: Elevating American Indian and Alaska Native Nurses' ? '/images/sponsors/iic-logo.png' : undefined}
+                  logoAlt={r === 'NHHRI' ? 'NHHRI logo' : r === 'IIC: Elevating American Indian and Alaska Native Nurses' ? 'IIC logo' : undefined}
                 />
               ))}
             </div>

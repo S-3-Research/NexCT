@@ -208,7 +208,7 @@ export const SOURCE_OPTIONS = [
 export const REFERRAL_OPTIONS = [
   // 'MedChi',
   'NHHRI',
-  "Elevating American Indian and Alaska Native Nurses"
+  "IIC: Elevating American Indian and Alaska Native Nurses"
 ]
 
 export const US_STATES = [
