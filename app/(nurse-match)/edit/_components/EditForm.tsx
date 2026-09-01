@@ -79,7 +79,7 @@ function RadioOption({ name, value, label, desc, defaultChecked, logoSrc, logoAl
       <span className="text-[14px] leading-[1.45] text-white/60 flex items-center gap-2">
         {logoSrc && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={logoSrc} alt={logoAlt || ''} className="h-5 w-auto object-contain shrink-0" />
+          <img src={logoSrc} alt={logoAlt || ''} className="h-8 w-auto object-contain shrink-0" />
         )}
         <span>
           {desc ? (
